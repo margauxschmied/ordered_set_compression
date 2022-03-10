@@ -1,0 +1,39 @@
+
+import compressor.RunLength;
+import compressor.huffman.Huffman;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class main {
+    public static void main(String[] args) {
+        RunLength runLengthCompressor =new RunLength();
+
+        List<Integer> list=new ArrayList<>();
+        list.add(2);
+        list.add(7);
+        list.add(9);
+        list.add(11);
+        List<Integer> lc=runLengthCompressor.compresse(list);
+        System.out.println(lc);
+
+        List<Integer> ld=runLengthCompressor.decompresse(lc);
+        System.out.println(ld);
+
+        Huffman huffman=new Huffman();
+
+        list=new ArrayList<>();
+        list.add(0);
+        list.add(0);
+        list.add(2);
+        list.add(7);
+        list.add(9);
+        list.add(11);
+        list.add(11);
+
+        List<Object> s = huffman.compress(list);
+        System.out.println(s);
+        System.out.println(huffman.decompress(s));
+
+    }
+}
