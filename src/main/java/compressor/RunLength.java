@@ -32,8 +32,8 @@ public class RunLength extends AbstractCompressor {
         List<Object> res=new ArrayList<>();
 
         for (int i=0; i<toDecompress.size(); i+=2) {
-            for(int j=0; j<(int) toDecompress.get(i); j++){
-                res.add((Integer) toDecompress.get(i+1));
+            for(int j=0; j<(Integer) toDecompress.get(i); j++){
+                res.add(toDecompress.get(i+1));
             }
         }
         //List<Integer> diff=super.defferencialDeltaAdd(res);
