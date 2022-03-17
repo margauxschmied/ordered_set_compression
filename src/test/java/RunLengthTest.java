@@ -3,10 +3,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 class RunLengthTest {
     List<Object> toCompress;
@@ -15,14 +14,14 @@ class RunLengthTest {
 
     @BeforeEach
     void setUp() {
-        runLength =new RunLength();
-        toCompress=new ArrayList<>();
+        runLength = new RunLength();
+        toCompress = new ArrayList<>();
         toCompress.add(2);
         toCompress.add(7);
         toCompress.add(9);
         toCompress.add(11);
 
-        toDecompress=new ArrayList<>();
+        toDecompress = new ArrayList<>();
         toDecompress.add(1);
         toDecompress.add(2);
         toDecompress.add(1);
@@ -40,7 +39,6 @@ class RunLengthTest {
 
     @Test
     void decompress() {
-        //System.out.println((Integer) toDecompress.get(0));
         assertEquals(toCompress, runLength.decompress(toDecompress));
     }
 

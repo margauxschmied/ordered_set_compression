@@ -93,12 +93,12 @@ public class Huffman extends AbstractCompressor {
     @Override
     public List<Object> decompress(List<Object> toDecompress) {
         StringBuilder stringBuilder = new StringBuilder();
-        List<Object> res= new ArrayList<>();
+        List<Object> res = new ArrayList<>();
         HuffmanNode temp = root;
 
         for (int i = 0; i < toDecompress.size(); i++) {
             String val = String.valueOf(toDecompress.get(i));
-            for (int k=0; k< val.length(); k++) {
+            for (int k = 0; k < val.length(); k++) {
                 int j = Integer.parseInt(String.valueOf(val.charAt(k)));
 
                 if (j == 0) {
