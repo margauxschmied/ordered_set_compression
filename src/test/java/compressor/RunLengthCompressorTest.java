@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 class RunLengthCompressorTest {
-    List<Integer> list;
+    List<Object> list;
     RunLength runLengthCompressor;
 
     @BeforeEach
@@ -24,14 +24,14 @@ class RunLengthCompressorTest {
 
     @Test
     void compress() {
-        List<Integer> res=new ArrayList<>();
+        List<Object> res=new ArrayList<>();
         res.add(1);
         res.add(2);
         res.add(1);
         res.add(5);
         res.add(2);
         res.add(2);
-        assertEquals(res, runLengthCompressor.compresse(list));
+        assertEquals(res, runLengthCompressor.compress(list));
     }
 
 }

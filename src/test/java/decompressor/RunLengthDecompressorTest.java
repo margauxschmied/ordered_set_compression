@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -32,6 +33,6 @@ class RunLengthDecompressorTest {
         res.add(7);
         res.add(9);
         res.add(11);
-        assertEquals(res, runLengthDecompressor.decompresse(list));
+        assertEquals(res, runLengthDecompressor.decompress(Collections.singletonList(list)));
     }
 }

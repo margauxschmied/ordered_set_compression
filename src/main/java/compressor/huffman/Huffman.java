@@ -48,7 +48,7 @@ public class Huffman extends AbstractCompressor {
     }
 
 
-    private void setPrefixCodes(HuffmanNode node, StringBuilder prefix) {
+    private void createCodes(HuffmanNode node, StringBuilder prefix) {
 
         if (node != null) {
             if (node.left == null && node.right == null) {
@@ -56,43 +56,44 @@ public class Huffman extends AbstractCompressor {
 
             } else {
                 prefix.append('0');
-                setPrefixCodes(node.left, prefix);
+                createCodes(node.left, prefix);
                 prefix.deleteCharAt(prefix.length() - 1);
 
                 prefix.append('1');
-                setPrefixCodes(node.right, prefix);
+                createCodes(node.right, prefix);
                 prefix.deleteCharAt(prefix.length() - 1);
             }
         }
 
     }
 
-    public List<Object> compress(List<Integer> toCompress) {
+    @Override
+    public List<Object> compress(List<Object> toCompress) {
         Map<Integer, Integer> freq = new HashMap<>();
         for (int i = 0; i < toCompress.size(); i++) {
             if (!freq.containsKey(toCompress.get(i))) {
-                freq.put(toCompress.get(i), 0);
+                freq.put((Integer) toCompress.get(i), 0);
             }
-            freq.put(toCompress.get(i), freq.get(toCompress.get(i)) + 1);
+            freq.put((Integer) toCompress.get(i), freq.get(toCompress.get(i)) + 1);
         }
 
         root = buildTree(freq);
 
-        setPrefixCodes(root, new StringBuilder());
+        createCodes(root, new StringBuilder());
         List<Object> res = new ArrayList<>();
 
         for (int i = 0; i < toCompress.size(); i++) {
-            int e = toCompress.get(i);
+            int e = (int) toCompress.get(i);
             res.add(charPrefixHashMap.get(e));
         }
 
         return res;
     }
 
-    public List<Integer> decompress(List<Object> toDecompress) {
-
+    @Override
+    public List<Object> decompress(List<Object> toDecompress) {
         StringBuilder stringBuilder = new StringBuilder();
-        List<Integer> res= new ArrayList<>();
+        List<Object> res= new ArrayList<>();
         HuffmanNode temp = root;
 
         for (int i = 0; i < toDecompress.size(); i++) {

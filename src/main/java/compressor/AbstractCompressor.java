@@ -3,7 +3,7 @@ package compressor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractCompressor implements Compressor {
+public abstract class AbstractCompressor implements Compressor {
 
     public List<Integer> defferencialDeltaSub(List<Integer> list){
         List<Integer> res=new ArrayList();
@@ -23,13 +23,8 @@ public class AbstractCompressor implements Compressor {
         return res;
     }
 
-    @Override
-    public List<Integer> compresse(List<Integer> toCompress) {
-        return null;
-    }
 
-    @Override
-    public List<Integer> decompresse(List<Integer> toDecompress) {
-        return null;
-    }
+//    public abstract List<Object> compress(List<Object> toCompress);
+//
+//    public abstract List<Object> decompress(List<Object> toDecompress);
 }

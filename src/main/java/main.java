@@ -9,15 +9,15 @@ public class main {
     public static void main(String[] args) {
         RunLength runLengthCompressor =new RunLength();
 
-        List<Integer> list=new ArrayList<>();
+        List<Object> list=new ArrayList<>();
         list.add(2);
         list.add(7);
         list.add(9);
         list.add(11);
-        List<Integer> lc=runLengthCompressor.compresse(list);
+        List<Object> lc=runLengthCompressor.compress(list);
         System.out.println(lc);
 
-        List<Integer> ld=runLengthCompressor.decompresse(lc);
+        List<Object> ld=runLengthCompressor.decompress(lc);
         System.out.println(ld);
 
         Huffman huffman=new Huffman();

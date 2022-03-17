@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface Compressor {
 
-    List<Integer> compresse(List<Integer> toCompress);
+    List<Object> compress(List<Object> toCompress);
 
-    List<Integer> decompresse(List<Integer> toDecompress);
+    List<Object> decompress(List<Object> toDecompress);
 
 }
