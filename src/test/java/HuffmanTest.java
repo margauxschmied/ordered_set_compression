@@ -30,12 +30,8 @@ public class HuffmanTest {
     }
 
     @Test
-    void compress() {
+    void huffman() {
         assertEquals(toDecompress, huffman.compress(toCompress));
-    }
-
-    @Test
-    void decompress() {
         assertEquals(toCompress, huffman.decompress(toDecompress));
     }
 
