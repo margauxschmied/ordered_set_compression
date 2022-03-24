@@ -7,7 +7,6 @@ import java.util.*;
 public class Huffman extends AbstractCompressor {
 
     private Map<Integer, String> charPrefixHashMap = new HashMap<>();
-    //static HuffmanNode root; //TODO sortir root d'huffman
 
     private HuffmanNode buildTree(Map<Integer, Integer> freq) {
 
