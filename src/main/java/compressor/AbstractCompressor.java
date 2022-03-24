@@ -67,8 +67,15 @@ public abstract class AbstractCompressor implements Compressor {
         return res;
     }
 
-
-//    public abstract List<Object> compress(List<Object> toCompress);
-//
-//    public abstract List<Object> decompress(List<Object> toDecompress);
+    public List<Object> complementary(List<Object> list){
+        List<Object> res = new ArrayList();
+        res.add(list.get(0));
+        for(int i = (int) list.get(0); i<(Integer) list.get(list.size()-1); i++){
+            if(!list.contains(i)){
+                res.add(i);
+            }
+        }
+        res.add(list.get(list.size()-1));
+        return res;
+    }
 }

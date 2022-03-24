@@ -35,4 +35,45 @@ public class HuffmanTest {
         assertEquals(toCompress, huffman.decompress(toDecompress));
     }
 
+//    @Test
+//    void huffman2() {
+//        toCompress = new ArrayList<>();
+//        toCompress.add(4);
+//        toCompress.add(3);
+//        toCompress.add(15);
+//        toCompress.add(4);
+//        toCompress.add(5);
+//        toCompress.add(0);
+//        toCompress.add(8);
+//        toCompress.add(21);
+//        toCompress.add(6);
+//        toCompress.add(6);
+//        toCompress.add(13);
+//        toCompress.add(1);
+//        toCompress.add(14);
+//
+//        assertEquals(toDecompress, huffman.compress(toCompress));
+//        //assertEquals(toCompress, huffman.decompress(toDecompress));
+//    }
+
+//    @Test
+//    void huffman3() {
+//        toCompress = new ArrayList<>();
+//        toCompress.add(4);
+//        toCompress.add(3);
+//        toCompress.add(15);
+//        toCompress.add(4);
+//        toCompress.add(5);
+//        toCompress.add(13);
+//        toCompress.add(15);
+//        toCompress.add(9);
+//
+//
+//        assertEquals(toDecompress, huffman.compress(toCompress));
+//        //assertEquals(toCompress, huffman.decompress(toDecompress));
+//    }
+
+    //4, 3, 15, 4, 5, 0, 8, 21, 6, 6, 13, 1, 14
+    //4, 3, 15, 4, 5, 13, 15, 9
+
 }
