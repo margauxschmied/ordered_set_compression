@@ -1,4 +1,5 @@
 import compressor.huffman.Huffman;
+import compressor.huffman.HuffmanData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,30 +32,50 @@ public class HuffmanTest {
 
     @Test
     void huffman() {
-        assertEquals(toDecompress, huffman.compress(toCompress));
-        assertEquals(toCompress, huffman.decompress(toDecompress));
+        HuffmanData huffmanData = huffman.compress(toCompress);
+        assertEquals(toDecompress, huffmanData.getList());
+
+        assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getRoot(), toDecompress)));
     }
 
-//    @Test
-//    void huffman2() {
-//        toCompress = new ArrayList<>();
-//        toCompress.add(4);
-//        toCompress.add(3);
-//        toCompress.add(15);
-//        toCompress.add(4);
-//        toCompress.add(5);
-//        toCompress.add(0);
-//        toCompress.add(8);
-//        toCompress.add(21);
-//        toCompress.add(6);
-//        toCompress.add(6);
-//        toCompress.add(13);
-//        toCompress.add(1);
-//        toCompress.add(14);
-//
-//        assertEquals(toDecompress, huffman.compress(toCompress));
-//        //assertEquals(toCompress, huffman.decompress(toDecompress));
-//    }
+    @Test
+    void huffman2() {
+        toCompress = new ArrayList<>();
+        toCompress.add(4);
+        toCompress.add(3);
+        toCompress.add(15);
+        toCompress.add(4);
+        toCompress.add(5);
+        toCompress.add(0);
+        toCompress.add(8);
+        toCompress.add(21);
+        toCompress.add(6);
+        toCompress.add(6);
+        toCompress.add(13);
+        toCompress.add(1);
+        toCompress.add(14);
+
+
+        toDecompress = new ArrayList<>();
+        toDecompress.add("101");
+        toDecompress.add("0111");
+        toDecompress.add("1111");
+        toDecompress.add("101");
+        toDecompress.add("0110");
+        toDecompress.add("1110");
+        toDecompress.add("1000");
+        toDecompress.add("010");
+        toDecompress.add("00");
+        toDecompress.add("00");
+        toDecompress.add("1001");
+        toDecompress.add("1101");
+        toDecompress.add("1100");
+
+        HuffmanData huffmanData = huffman.compress(toCompress);
+
+        assertEquals(toDecompress, huffmanData.getList());
+        assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getRoot(), toDecompress)));
+    }
 
 //    @Test
 //    void huffman3() {

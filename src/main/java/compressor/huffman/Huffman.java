@@ -7,7 +7,7 @@ import java.util.*;
 public class Huffman extends AbstractCompressor {
 
     private Map<Integer, String> charPrefixHashMap = new HashMap<>();
-    static HuffmanNode root; //TODO sortir root d'huffman
+    //static HuffmanNode root; //TODO sortir root d'huffman
 
     private HuffmanNode buildTree(Map<Integer, Integer> freq) {
 
@@ -23,6 +23,7 @@ public class Huffman extends AbstractCompressor {
             priorityQueue.offer(huffmanNode);
         }
 
+        HuffmanNode root;
 
         while (priorityQueue.size() > 1) {
 
@@ -67,8 +68,7 @@ public class Huffman extends AbstractCompressor {
 
     }
 
-    @Override
-    public List<Object> compress(List<Object> toCompress) {
+    public HuffmanData compress(List<Object> toCompress) {
         Map<Integer, Integer> freq = new HashMap<>();
         for (int i = 0; i < toCompress.size(); i++) {
             if (!freq.containsKey(toCompress.get(i))) {
@@ -77,7 +77,7 @@ public class Huffman extends AbstractCompressor {
             freq.put((Integer) toCompress.get(i), freq.get(toCompress.get(i)) + 1);
         }
 
-        root = buildTree(freq);
+        HuffmanNode root = buildTree(freq);
 
         createCodes(root, new StringBuilder());
         List<Object> res = new ArrayList<>();
@@ -87,14 +87,14 @@ public class Huffman extends AbstractCompressor {
             res.add(charPrefixHashMap.get(e));
         }
 
-        return res;
+        return new HuffmanData(root, res);
     }
 
-    @Override
-    public List<Object> decompress(List<Object> toDecompress) {
+    public List<Object> decompress(HuffmanData huffmanData) {
         StringBuilder stringBuilder = new StringBuilder();
+        List<Object> toDecompress = huffmanData.getList();
         List<Object> res = new ArrayList<>();
-        HuffmanNode temp = root;
+        HuffmanNode temp = huffmanData.getRoot();
 
         for (int i = 0; i < toDecompress.size(); i++) {
             String val = String.valueOf(toDecompress.get(i));
@@ -105,14 +105,14 @@ public class Huffman extends AbstractCompressor {
                     temp = temp.left;
                     if (temp.left == null && temp.right == null) {
                         stringBuilder.append(temp.data);
-                        temp = root;
+                        temp = huffmanData.getRoot();
                     }
                 }
                 if (j == 1) {
                     temp = temp.right;
                     if (temp.left == null && temp.right == null) {
                         stringBuilder.append(temp.data);
-                        temp = root;
+                        temp = huffmanData.getRoot();
                     }
                 }
             }

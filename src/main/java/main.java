@@ -1,6 +1,7 @@
 
 import compressor.RunLength;
 import compressor.huffman.Huffman;
+import compressor.huffman.HuffmanData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,9 @@ public class main {
         list.add(11);
         list.add(11);
 
-        List<Object> s = huffman.compress(list);
-        System.out.println(s);
-        System.out.println(huffman.decompress(s));
+        HuffmanData huffmanData = huffman.compress(list);
+        System.out.println(huffmanData.getList());
+        System.out.println(huffman.decompress(huffmanData));
 
     }
 }
