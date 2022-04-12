@@ -1,17 +1,25 @@
 import compressor.huffman.Huffman;
 import compressor.huffman.HuffmanData;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class HuffmanTest {
-    List<Object> toCompress;
+    List<Integer> toCompress;
     List<Object> toDecompress;
     Huffman huffman;
+    JSONParser jsonP = new JSONParser();
+    ArrayList<Integer> listData;
+    ArrayList<Object> listHuffman;
 
     @BeforeEach
     void setUp() {
@@ -28,6 +36,24 @@ public class HuffmanTest {
         toDecompress.add("10");
         toDecompress.add("01");
 
+    }
+
+    void creatList(String data, String runlength) throws IOException, ParseException {
+        JSONArray jsonData = (JSONArray) jsonP.parse(new FileReader(data));
+
+        listData = new ArrayList<>();
+
+        for (Object jsonDatum : jsonData) {
+            listData.add((int) (long) jsonDatum);
+        }
+
+        JSONArray jsonRunlength = (JSONArray) jsonP.parse(new FileReader(runlength));
+
+        listHuffman = new ArrayList<>();
+
+        for (Object o : jsonRunlength) {
+            listHuffman.add(o);
+        }
     }
 
     @Test
@@ -77,6 +103,27 @@ public class HuffmanTest {
         assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getRoot(), toDecompress)));
     }
 
+    @Test
+    void huffman0_10_1000() throws IOException, ParseException {
+        creatList("dataset/dataset_0_100_1000.json", "dataset/huffman_0_100_1000.json");
+        HuffmanData huffmanData = huffman.compress(listData);
+
+        assertEquals(listHuffman, huffmanData.getList());
+        assertEquals(listData, huffman.decompress(new HuffmanData(huffmanData.getRoot(), listHuffman)));
+
+    }
+
+    @Test
+    void huffman0_10_100000() throws IOException, ParseException {
+        creatList("dataset/dataset_0_100_100000.json", "dataset/huffman_0_100_100000.json");
+        HuffmanData huffmanData = huffman.compress(listData);
+
+        assertEquals(listHuffman, huffmanData.getList());
+        assertEquals(listData, huffman.decompress(new HuffmanData(huffmanData.getRoot(), listHuffman)));
+
+    }
+
+
 //    @Test
 //    void huffman3() {
 //        toCompress = new ArrayList<>();
@@ -90,7 +137,7 @@ public class HuffmanTest {
 //        toCompress.add(9);
 //
 //
-//        assertEquals(toDecompress, huffman.compress(toCompress));
+//        assertEquals(toDecompress, huffman.compress(toCompress).getList());
 //        //assertEquals(toCompress, huffman.decompress(toDecompress));
 //    }
 
