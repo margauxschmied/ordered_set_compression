@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,8 +78,19 @@ class RunLengthTest {
 
     @Test
     void compress0_100_1000() throws IOException, ParseException {
+        LocalTime before = LocalTime.now();
         creatList("dataset/dataset_0_100_1000.json", "dataset/runlength_0_100_1000.json");
+        LocalTime after = LocalTime.now();
+        System.out.print(after.getHour()-before.getHour());
+        System.out.print(":");
+        System.out.print(after.getMinute()-before.getMinute());
+        System.out.print(":");
+        System.out.print(after.getSecond()-before.getSecond());
+        System.out.print(":");
+        System.out.println(after.getNano()-before.getNano());
+
         assertEquals(listRunlength, runLength.compress(listData));
+
     }
 
     @Test

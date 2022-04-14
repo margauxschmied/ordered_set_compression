@@ -1,20 +1,21 @@
 package compressor.huffman;
 
 import java.util.List;
+import java.util.Map;
 
 public class HuffmanData {
-    HuffmanNode root;
+    Map code;
     List list;
-    public HuffmanData(HuffmanNode root, List list) {
-        this.root=root;
+    public HuffmanData(Map<Integer, String> code, List list) {
+        this.code=code;
         this.list=list;
-    }
-
-    public HuffmanNode getRoot() {
-        return root;
     }
 
     public List getList() {
         return list;
+    }
+
+    public Map getCode() {
+        return code;
     }
 }

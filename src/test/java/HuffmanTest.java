@@ -1,6 +1,7 @@
 import compressor.huffman.Huffman;
 import compressor.huffman.HuffmanData;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +10,9 @@ import org.junit.jupiter.api.Test;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,6 +23,7 @@ public class HuffmanTest {
     JSONParser jsonP = new JSONParser();
     ArrayList<Integer> listData;
     ArrayList<Object> listHuffman;
+    Map<Integer, String> mapTree;
 
     @BeforeEach
     void setUp() {
@@ -38,7 +42,7 @@ public class HuffmanTest {
 
     }
 
-    void creatList(String data, String runlength) throws IOException, ParseException {
+    void creatList(String data, String runlength, String tree) throws IOException, ParseException {
         JSONArray jsonData = (JSONArray) jsonP.parse(new FileReader(data));
 
         listData = new ArrayList<>();
@@ -54,6 +58,15 @@ public class HuffmanTest {
         for (Object o : jsonRunlength) {
             listHuffman.add(o);
         }
+
+        JSONObject jsonTree = (JSONObject) jsonP.parse(new FileReader(tree));
+
+        mapTree = new HashMap();
+
+        for (int i=0; i<jsonTree.size(); i++) {
+//            System.out.println(jsonTree.get(i+""));
+            mapTree.put(i, (String) jsonTree.get(i+""));
+        }
     }
 
     @Test
@@ -61,7 +74,7 @@ public class HuffmanTest {
         HuffmanData huffmanData = huffman.compress(toCompress);
         assertEquals(toDecompress, huffmanData.getList());
 
-        assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getRoot(), toDecompress)));
+        assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getCode(), toDecompress)));
     }
 
     @Test
@@ -100,26 +113,26 @@ public class HuffmanTest {
         HuffmanData huffmanData = huffman.compress(toCompress);
 
         assertEquals(toDecompress, huffmanData.getList());
-        assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getRoot(), toDecompress)));
+        assertEquals(toCompress, huffman.decompress(new HuffmanData(huffmanData.getCode(), toDecompress)));
     }
 
     @Test
-    void huffman0_10_1000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_1000.json", "dataset/huffman_0_100_1000.json");
+    void huffman0_100_1000() throws IOException, ParseException {
+        creatList("dataset/dataset_0_100_1000.json", "dataset/huffman_0_100_1000.json", "dataset/tree_0_100_1000.json");
         HuffmanData huffmanData = huffman.compress(listData);
 
         assertEquals(listHuffman, huffmanData.getList());
-        assertEquals(listData, huffman.decompress(new HuffmanData(huffmanData.getRoot(), listHuffman)));
+        assertEquals(listData, huffman.decompress(new HuffmanData(mapTree, listHuffman)));
 
     }
 
     @Test
-    void huffman0_10_100000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_100000.json", "dataset/huffman_0_100_100000.json");
+    void huffman0_100_100000() throws IOException, ParseException {
+        creatList("dataset/dataset_0_100_100000.json", "dataset/huffman_0_100_100000.json", "dataset/tree_0_100_100000.json");
         HuffmanData huffmanData = huffman.compress(listData);
 
         assertEquals(listHuffman, huffmanData.getList());
-        assertEquals(listData, huffman.decompress(new HuffmanData(huffmanData.getRoot(), listHuffman)));
+        assertEquals(listData, huffman.decompress(new HuffmanData(mapTree, listHuffman)));
 
     }
 
