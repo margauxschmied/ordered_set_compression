@@ -118,7 +118,7 @@ public class HuffmanTest {
 
     @Test
     void huffman0_100_1000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_1000.json", "dataset/huffman_0_100_1000.json", "dataset/tree_0_100_1000.json");
+        creatList("dataset/dataset_0_100_1000.txt", "dataset/huffman_0_100_1000.json", "dataset/tree_0_100_1000.json");
         HuffmanData huffmanData = huffman.compress(listData);
 
         assertEquals(listHuffman, huffmanData.getList());
@@ -128,7 +128,7 @@ public class HuffmanTest {
 
     @Test
     void huffman0_100_100000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_100000.json", "dataset/huffman_0_100_100000.json", "dataset/tree_0_100_100000.json");
+        creatList("dataset/dataset_0_100_100000.txt", "dataset/huffman_0_100_100000.json", "dataset/tree_0_100_100000.json");
         HuffmanData huffmanData = huffman.compress(listData);
 
         assertEquals(listHuffman, huffmanData.getList());
@@ -137,22 +137,32 @@ public class HuffmanTest {
     }
 
 
-//    @Test
-//    void huffman3() {
-//        toCompress = new ArrayList<>();
-//        toCompress.add(4);
-//        toCompress.add(3);
-//        toCompress.add(15);
-//        toCompress.add(4);
-//        toCompress.add(5);
-//        toCompress.add(13);
-//        toCompress.add(15);
-//        toCompress.add(9);
-//
-//
-//        assertEquals(toDecompress, huffman.compress(toCompress).getList());
-//        //assertEquals(toCompress, huffman.decompress(toDecompress));
-//    }
+    @Test
+    void huffman3() {
+        toCompress = new ArrayList<>();
+        toCompress.add(1);
+        toCompress.add(3);
+        toCompress.add(4);
+        toCompress.add(1);
+        toCompress.add(5);
+        toCompress.add(6);
+        toCompress.add(4);
+
+        System.out.println(toCompress);
+
+        toDecompress = new ArrayList<>();
+        toDecompress.add("11");
+        toDecompress.add("010");
+        toDecompress.add("10");
+        toDecompress.add("11");
+        toDecompress.add("00");
+        toDecompress.add("011");
+        toDecompress.add("10");
+
+
+        assertEquals(toDecompress, huffman.compress(toCompress).getList());
+//        assertEquals(toCompress, huffman.decompress(toDecompress));
+    }
 
     //4, 3, 15, 4, 5, 0, 8, 21, 6, 6, 13, 1, 14
     //4, 3, 15, 4, 5, 13, 15, 9

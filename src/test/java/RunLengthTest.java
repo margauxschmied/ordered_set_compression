@@ -6,11 +6,16 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -48,21 +53,41 @@ class RunLengthTest {
         toDecompress.add(12);
     }
 
+    public void readingTextusingBufferedReader(String data)throws Exception
+    {
+        File doc =new File(data);
+        Scanner obj = new Scanner(doc);
+
+        while (obj.hasNextLine()) {
+            String[] arrOfStr = obj.nextLine().split(",");
+            for (String a : arrOfStr)
+                System.out.println(a);
+        }
+    }
+
+
+
     void creatList(String data, String runlength) throws IOException, ParseException {
-        JSONArray jsonData = (JSONArray) jsonP.parse(new FileReader(data));
 
         listData = new ArrayList<>();
 
-        for (Object jsonDatum : jsonData) {
-            listData.add((int) (long) jsonDatum);
+        File doc =new File(data);
+        Scanner obj = new Scanner(doc);
+
+        while (obj.hasNextLine()) {
+            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+                    Integer.valueOf(x)).collect(Collectors.toList());
         }
 
-        JSONArray jsonRunlength = (JSONArray) jsonP.parse(new FileReader(runlength));
+        doc =new File(runlength);
+        obj = new Scanner(doc);
 
         listRunlength = new ArrayList<>();
 
-        for (Object o : jsonRunlength) {
-            listRunlength.add((int) (long) o);
+        while (obj.hasNextLine()) {
+            listRunlength = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+                    Integer.valueOf(x)).collect(Collectors.toList());
+
         }
     }
 
@@ -79,7 +104,7 @@ class RunLengthTest {
     @Test
     void compress0_100_1000() throws IOException, ParseException {
         LocalTime before = LocalTime.now();
-        creatList("dataset/dataset_0_100_1000.json", "dataset/runlength_0_100_1000.json");
+        creatList("dataset/dataset_0_100_1000.txt", "dataset/runlength_0_100_1000.txt");
         LocalTime after = LocalTime.now();
         System.out.print(after.getHour()-before.getHour());
         System.out.print(":");
@@ -94,43 +119,44 @@ class RunLengthTest {
     }
 
     @Test
-    void decompress0_100_1000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_1000.json", "dataset/runlength_0_100_1000.json");
+    void decompress0_100_1000() throws Exception {
+        readingTextusingBufferedReader("dataset/dataset_0_100_1000.txt");
+        creatList("dataset/dataset_0_100_1000.txt", "dataset/runlength_0_100_1000.txt");
         assertEquals(listData, runLength.decompress(listRunlength));
     }
 
     @Test
     void compress0_100_100000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_100000.json", "dataset/runlength_0_100_100000.json");
+        creatList("dataset/dataset_0_100_100000.txt", "dataset/runlength_0_100_100000.txt");
         assertEquals(listRunlength, runLength.compress(listData));
     }
 
     @Test
     void decompress0_100_100000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100_100000.json", "dataset/runlength_0_100_100000.json");
+        creatList("dataset/dataset_0_100_100000.txt", "dataset/runlength_0_100_100000.txt");
         assertEquals(listData, runLength.decompress(listRunlength));
     }
     @Test
     void compress0_100000_1000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100000_1000.json", "dataset/runlength_0_100000_1000.json");
+        creatList("dataset/dataset_0_100000_1000.txt", "dataset/runlength_0_100000_1000.txt");
         assertEquals(listRunlength, runLength.compress(listData));
     }
 
     @Test
     void decompress0_100000_1000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100000_1000.json", "dataset/runlength_0_100000_1000.json");
+        creatList("dataset/dataset_0_100000_1000.txt", "dataset/runlength_0_100000_1000.txt");
         assertEquals(listData, runLength.decompress(listRunlength));
     }
 
     @Test
     void compress0_100000_100000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100000_100000.json", "dataset/runlength_0_100000_100000.json");
+        creatList("dataset/dataset_0_100000_100000.txt", "dataset/runlength_0_100000_100000.txt");
         assertEquals(listRunlength, runLength.compress(listData));
     }
 
     @Test
     void decompress0_100000_100000() throws IOException, ParseException {
-        creatList("dataset/dataset_0_100000_100000.json", "dataset/runlength_0_100000_100000.json");
+        creatList("dataset/dataset_0_100000_100000.txt", "dataset/runlength_0_100000_100000.txt");
         assertEquals(listData, runLength.decompress(listRunlength));
     }
 
