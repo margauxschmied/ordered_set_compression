@@ -1,14 +1,11 @@
 import compressor.RunLength;
 
-import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ class RunLengthTest {
     RunLength runLength;
     JSONParser jsonP = new JSONParser();
     ArrayList<Integer> listData;
-    ArrayList<Integer> listRunlength;
+    ArrayList<Integer> listCompress;
 
     @BeforeEach
     void setUp() {
@@ -53,20 +50,6 @@ class RunLengthTest {
         toDecompress.add(12);
     }
 
-    public void readingTextusingBufferedReader(String data)throws Exception
-    {
-        File doc =new File(data);
-        Scanner obj = new Scanner(doc);
-
-        while (obj.hasNextLine()) {
-            String[] arrOfStr = obj.nextLine().split(",");
-            for (String a : arrOfStr)
-                System.out.println(a);
-        }
-    }
-
-
-
     void creatList(String data, String runlength) throws IOException, ParseException {
 
         listData = new ArrayList<>();
@@ -82,10 +65,10 @@ class RunLengthTest {
         doc =new File(runlength);
         obj = new Scanner(doc);
 
-        listRunlength = new ArrayList<>();
+        listCompress = new ArrayList<>();
 
         while (obj.hasNextLine()) {
-            listRunlength = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            listCompress = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
                     Integer.valueOf(x)).collect(Collectors.toList());
 
         }
@@ -114,50 +97,49 @@ class RunLengthTest {
         System.out.print(":");
         System.out.println(after.getNano()-before.getNano());
 
-        assertEquals(listRunlength, runLength.compress(listData));
+        assertEquals(listCompress, runLength.compress(listData));
 
     }
 
     @Test
     void decompress0_100_1000() throws Exception {
-        readingTextusingBufferedReader("dataset/dataset_0_100_1000.txt");
         creatList("dataset/dataset_0_100_1000.txt", "dataset/runlength_0_100_1000.txt");
-        assertEquals(listData, runLength.decompress(listRunlength));
+        assertEquals(listData, runLength.decompress(listCompress));
     }
 
     @Test
     void compress0_100_100000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100_100000.txt", "dataset/runlength_0_100_100000.txt");
-        assertEquals(listRunlength, runLength.compress(listData));
+        assertEquals(listCompress, runLength.compress(listData));
     }
 
     @Test
     void decompress0_100_100000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100_100000.txt", "dataset/runlength_0_100_100000.txt");
-        assertEquals(listData, runLength.decompress(listRunlength));
+        assertEquals(listData, runLength.decompress(listCompress));
     }
     @Test
     void compress0_100000_1000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100000_1000.txt", "dataset/runlength_0_100000_1000.txt");
-        assertEquals(listRunlength, runLength.compress(listData));
+        assertEquals(listCompress, runLength.compress(listData));
     }
 
     @Test
     void decompress0_100000_1000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100000_1000.txt", "dataset/runlength_0_100000_1000.txt");
-        assertEquals(listData, runLength.decompress(listRunlength));
+        assertEquals(listData, runLength.decompress(listCompress));
     }
 
     @Test
     void compress0_100000_100000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100000_100000.txt", "dataset/runlength_0_100000_100000.txt");
-        assertEquals(listRunlength, runLength.compress(listData));
+        assertEquals(listCompress, runLength.compress(listData));
     }
 
     @Test
     void decompress0_100000_100000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100000_100000.txt", "dataset/runlength_0_100000_100000.txt");
-        assertEquals(listData, runLength.decompress(listRunlength));
+        assertEquals(listData, runLength.decompress(listCompress));
     }
 
 

@@ -5,10 +5,14 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,13 +46,15 @@ public class ComplementaryTest {
 
     }
 
-    void creatList(String data) throws IOException, ParseException {
-        JSONArray jsonData = (JSONArray) jsonP.parse(new FileReader(data));
-
+    void creatList(String data) throws IOException {
         listData = new ArrayList<>();
 
-        for (Object jsonDatum : jsonData) {
-            listData.add((int) (long) jsonDatum);
+        File doc =new File(data);
+        Scanner obj = new Scanner(doc);
+
+        while (obj.hasNextLine()) {
+            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+                    Integer.valueOf(x)).collect(Collectors.toList());
         }
     }
 
