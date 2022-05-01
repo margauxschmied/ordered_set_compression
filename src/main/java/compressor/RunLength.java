@@ -10,20 +10,18 @@ public class RunLength extends AbstractCompressor {
         int compt = 1;
         int el = toCompress.get(0);
 
-       for (int i = 0; i < toCompress.size(); i++) {
-           if (i >= toCompress.size() - 1) {
+        for (int i = 0; i < toCompress.size(); i++) {
+            if (i >= toCompress.size() - 1) {
                 res.add(compt);
                 res.add(el);
-           }
-           else if (toCompress.get(i+1) != el) {
+            } else if (toCompress.get(i + 1) != el) {
                 res.add(compt);
                 res.add(el);
                 compt = 1;
                 el = toCompress.get(i + 1);
-           }
-           else{
-               compt+=1;
-           }
+            } else {
+                compt += 1;
+            }
         }
 
         return res;

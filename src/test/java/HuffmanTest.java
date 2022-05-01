@@ -1,14 +1,11 @@
 import compressor.huffman.Huffman;
 import compressor.huffman.HuffmanData;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,53 +38,44 @@ public class HuffmanTest {
 
     }
 
-    void creatList(String data, String compress, String tree) throws IOException, ParseException {
+    void creatList(String data, String compress, String tree) throws IOException {
 
         listData = new ArrayList<>();
 
-        File doc =new File(data);
+        File doc = new File(data);
         Scanner obj = new Scanner(doc);
 
         while (obj.hasNextLine()) {
-            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     Integer.valueOf(x)).collect(Collectors.toList());
         }
 
-        doc =new File(compress);
+        doc = new File(compress);
         obj = new Scanner(doc);
 
         listCompress = new ArrayList<>();
 
         while (obj.hasNextLine()) {
-            listCompress = (ArrayList<String>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            listCompress = (ArrayList<String>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     String.valueOf(x)).collect(Collectors.toList());
 
         }
 
-        doc =new File(tree);
+        doc = new File(tree);
         obj = new Scanner(doc);
 
         mapTree = new HashMap<>();
         List tmp = new ArrayList<>();
 
         while (obj.hasNextLine()) {
-            tmp = (ArrayList<String>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            tmp = (ArrayList<String>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     String.valueOf(x)).collect(Collectors.toList());
         }
 
-        for(int i=0; i<tmp.size(); i++){
+        for (int i = 0; i < tmp.size(); i++) {
             mapTree.put(i, (String) tmp.get(i));
         }
         System.out.println(mapTree);
-
-//        JSONObject jsonTree = (JSONObject) jsonP.parse(new FileReader(tree));
-//
-//        mapTree = new HashMap();
-//
-//        for (int i=0; i<jsonTree.size(); i++) {
-////            System.out.println(jsonTree.get(i+""));
-//            mapTree.put(i, (String) jsonTree.get(i+""));
-//        }
     }
 
     @Test

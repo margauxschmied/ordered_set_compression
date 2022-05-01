@@ -1,4 +1,3 @@
-
 import compressor.RunLength;
 import compressor.huffman.Huffman;
 import compressor.huffman.HuffmanData;

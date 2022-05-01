@@ -1,5 +1,4 @@
 import compressor.RunLength;
-
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,21 +53,21 @@ class RunLengthTest {
 
         listData = new ArrayList<>();
 
-        File doc =new File(data);
+        File doc = new File(data);
         Scanner obj = new Scanner(doc);
 
         while (obj.hasNextLine()) {
-            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     Integer.valueOf(x)).collect(Collectors.toList());
         }
 
-        doc =new File(runlength);
+        doc = new File(runlength);
         obj = new Scanner(doc);
 
         listCompress = new ArrayList<>();
 
         while (obj.hasNextLine()) {
-            listCompress = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            listCompress = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     Integer.valueOf(x)).collect(Collectors.toList());
 
         }
@@ -89,13 +88,13 @@ class RunLengthTest {
         LocalTime before = LocalTime.now();
         creatList("dataset/dataset_0_100_1000.txt", "dataset/runlength_0_100_1000.txt");
         LocalTime after = LocalTime.now();
-        System.out.print(after.getHour()-before.getHour());
+        System.out.print(after.getHour() - before.getHour());
         System.out.print(":");
-        System.out.print(after.getMinute()-before.getMinute());
+        System.out.print(after.getMinute() - before.getMinute());
         System.out.print(":");
-        System.out.print(after.getSecond()-before.getSecond());
+        System.out.print(after.getSecond() - before.getSecond());
         System.out.print(":");
-        System.out.println(after.getNano()-before.getNano());
+        System.out.println(after.getNano() - before.getNano());
 
         assertEquals(listCompress, runLength.compress(listData));
 
@@ -118,6 +117,7 @@ class RunLengthTest {
         creatList("dataset/dataset_0_100_100000.txt", "dataset/runlength_0_100_100000.txt");
         assertEquals(listData, runLength.decompress(listCompress));
     }
+
     @Test
     void compress0_100000_1000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100000_1000.txt", "dataset/runlength_0_100000_1000.txt");
@@ -141,7 +141,6 @@ class RunLengthTest {
         creatList("dataset/dataset_0_100000_100000.txt", "dataset/runlength_0_100000_100000.txt");
         assertEquals(listData, runLength.decompress(listCompress));
     }
-
 
 
 }

@@ -1,12 +1,9 @@
 import compressor.RunLength;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +18,6 @@ public class ComplementaryTest {
     List<Integer> toDecompress;
 
     RunLength runLength;
-    JSONParser jsonP = new JSONParser();
     ArrayList<Integer> listData;
 
     @BeforeEach
@@ -49,11 +45,11 @@ public class ComplementaryTest {
     void creatList(String data) throws IOException {
         listData = new ArrayList<>();
 
-        File doc =new File(data);
+        File doc = new File(data);
         Scanner obj = new Scanner(doc);
 
         while (obj.hasNextLine()) {
-            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x->
+            listData = (ArrayList<Integer>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     Integer.valueOf(x)).collect(Collectors.toList());
         }
     }
@@ -70,19 +66,30 @@ public class ComplementaryTest {
 
     @Test
     void compress0() {
-        assertEquals(new ArrayList<>(){{add(0); add(0);}}, runLength.complementary(new ArrayList<>(){{add(0);}}));
+        assertEquals(new ArrayList<>() {{
+            add(0);
+            add(0);
+        }}, runLength.complementary(new ArrayList<>() {{
+            add(0);
+        }}));
     }
 
     @Test
     void compress0_100_1000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100_1000.txt");
-        assertEquals(new ArrayList<>(){{add(0); add(100);}}, runLength.complementary(listData));
+        assertEquals(new ArrayList<>() {{
+            add(0);
+            add(100);
+        }}, runLength.complementary(listData));
     }
 
     @Test
     void compress0_100_100000() throws IOException, ParseException {
         creatList("dataset/dataset_0_100_100000.txt");
-        assertEquals(new ArrayList<>(){{add(0); add(100);}}, runLength.complementary(listData));
+        assertEquals(new ArrayList<>() {{
+            add(0);
+            add(100);
+        }}, runLength.complementary(listData));
     }
 
 }

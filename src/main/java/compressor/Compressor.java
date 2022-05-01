@@ -1,7 +1,5 @@
 package compressor;
 
-import java.util.List;
-
 public interface Compressor {
 
 //    List<Object> compress(List<Object> toCompress);

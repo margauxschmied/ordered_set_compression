@@ -6,9 +6,10 @@ import java.util.Map;
 public class HuffmanData {
     Map code;
     List list;
+
     public HuffmanData(Map<Integer, String> code, List list) {
-        this.code=code;
-        this.list=list;
+        this.code = code;
+        this.list = list;
     }
 
     public List getList() {

@@ -118,9 +118,8 @@ public class Huffman extends AbstractCompressor {
 //                }
 //            }
 
-            for (Map.Entry<Integer,String> entry : code.entrySet())
-            {
-                if(entry.getValue().equals(val)){
+            for (Map.Entry<Integer, String> entry : code.entrySet()) {
+                if (entry.getValue().equals(val)) {
                     res.add(entry.getKey());
                 }
             }
