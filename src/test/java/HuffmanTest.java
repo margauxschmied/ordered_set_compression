@@ -16,7 +16,6 @@ public class HuffmanTest {
     List<Integer> toCompress;
     List<Object> toDecompress;
     Huffman huffman;
-    JSONParser jsonP = new JSONParser();
     ArrayList<Integer> listData;
     ArrayList<String> listCompress;
     Map<Integer, String> mapTree;
@@ -65,17 +64,16 @@ public class HuffmanTest {
         obj = new Scanner(doc);
 
         mapTree = new HashMap<>();
-        List tmp = new ArrayList<>();
+        List<String> tmp = new ArrayList<>();
 
         while (obj.hasNextLine()) {
-            tmp = (ArrayList<String>) Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
+            tmp = Arrays.asList(obj.nextLine().split(" ")).stream().map(x ->
                     String.valueOf(x)).collect(Collectors.toList());
         }
 
-        for (int i = 0; i < tmp.size(); i++) {
-            mapTree.put(i, (String) tmp.get(i));
+        for (int i = 0; i < tmp.size(); i+=2) {
+            mapTree.put(Integer.valueOf(tmp.get(i)), tmp.get(i+1));
         }
-        System.out.println(mapTree);
     }
 
     @Test
@@ -130,6 +128,9 @@ public class HuffmanTest {
         creatList("dataset/dataset_0_100_1000.txt", "dataset/huffman_0_100_1000.txt", "dataset/tree_0_100_1000.txt");
         HuffmanData huffmanData = huffman.compress(listData);
 
+
+        System.out.println(listCompress);
+        System.out.println(huffmanData.getList());
         assertEquals(listCompress, huffmanData.getList());
         assertEquals(huffmanData.getCode(), mapTree);
         assertEquals(listData, huffman.decompress(new HuffmanData(mapTree, listCompress)));
