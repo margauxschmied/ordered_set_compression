@@ -78,4 +78,70 @@ public abstract class AbstractCompressor implements Compressor {
         res.add(list.get(list.size() - 1));
         return res;
     }
+
+    public List<Integer> complementaryByRange(List<Integer> list) {
+        List<List<Integer>> range=new ArrayList<>();
+        List<Integer> tmp = new ArrayList();
+
+//        tmp.add(list.get(0));
+        for (int i=1; i<list.size(); i++){
+            tmp.add(list.get(i-1));
+            if(list.get(i)< list.get(i-1)){
+                range.add(tmp);
+                tmp=new ArrayList<>();
+            }
+//            else{
+//                tmp.add(list.get(i-1));
+//            }
+        }
+
+//        for (int i=1; i<list.size()-1; i++){
+////            tmp.add(list.get(i));
+//            if(list.get(i)+1< list.get(i+1)){
+//                tmp.add(list.get(i));
+//            }
+//            else{
+//                range.add(tmp);
+//                tmp=new ArrayList<>();
+//            }
+//        }
+        tmp.add(list.get(list.size() - 1));
+
+        if(!tmp.isEmpty()) {
+            range.add(tmp);
+        }
+
+
+        List<Integer> res = new ArrayList();
+        for (List<Integer> l: range) {
+            if(l.size()>1 && l.get(l.size() - 1)-l.get(0)<l.size()*2) {
+//                res.add(l.get(0));
+//                for (int i = 0; i < l.size() - 1; i++) {
+//                    int nb = l.get(i);
+//                    while (nb < l.get(i + 1)-1) { //TODO: garder les repetition
+//                        res.add(nb);
+//                        nb += 1;
+//                    }
+//                }
+//                res.add(l.get(l.size() - 1));
+//                for (int i = l.get(0); i < l.get(l.size() - 1); i++) {
+//                    if (!list.contains(i)) {
+//                        res.add(i);
+//                    }
+//                }
+//                res.add(l.get(l.size() - 1));
+                res.addAll(complementary(l));
+            }
+            else{
+                res.addAll(l);}
+//            for (int i = l.get(0); i < l.get(l.size() - 1); i++) {
+//                if (!list.contains(i)) {
+//                    res.add(i);
+//                }
+//            }
+//            res.add(l.get(l.size() - 1));
+//            res.addAll(complementary(l));
+        }
+        return res;
+    }
 }

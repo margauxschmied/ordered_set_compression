@@ -1,5 +1,7 @@
 package compressor;
 
+import compressor.time.Stopwatch;
+
 import java.util.ArrayList;
 import java.util.List;
 

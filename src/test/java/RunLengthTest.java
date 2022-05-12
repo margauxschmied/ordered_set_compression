@@ -85,17 +85,7 @@ class RunLengthTest {
 
     @Test
     void compress0_100_1000() throws IOException, ParseException {
-        LocalTime before = LocalTime.now();
         creatList("dataset/dataset_0_100_1000.txt", "dataset/runlength_0_100_1000.txt");
-        LocalTime after = LocalTime.now();
-        System.out.print(after.getHour() - before.getHour());
-        System.out.print(":");
-        System.out.print(after.getMinute() - before.getMinute());
-        System.out.print(":");
-        System.out.print(after.getSecond() - before.getSecond());
-        System.out.print(":");
-        System.out.println(after.getNano() - before.getNano());
-
         assertEquals(listCompress, runLength.compress(listData));
 
     }

@@ -1,3 +1,5 @@
+package compressor.time;
+
 public class StopwatchAccessor {
     protected long start = -1;
     protected long cumul=0;

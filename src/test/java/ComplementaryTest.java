@@ -92,4 +92,23 @@ public class ComplementaryTest {
         }}, runLength.complementary(listData));
     }
 
+    @Test
+    void compress0_100_100000_by_range() throws IOException, ParseException {
+        creatList("dataset/dataset_0_100_100000.txt");
+        assertEquals(new ArrayList<>() {{
+            add(0);
+            add(100);
+        }}, runLength.complementaryByRange(listData));
+    }
+
+    @Test
+    void compress1() {
+        assertEquals(new ArrayList<>() {{
+            add(2);
+            add(1);
+        }}, runLength.complementaryByRange(new ArrayList<>() {{
+            add(2);
+            add(1);
+        }}));
+    }
 }

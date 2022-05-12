@@ -1,3 +1,11 @@
+package compressor.time;// Fonctionnement
+// Start demarre le chronometre, cumul n'est pas changé
+// Stop arrete le chronometre et ajoute la difference entre le stop et le dernier start à cumul
+// Reset : remet le chronometre à Zero. Donc arrete tout
+// Split : Provoque un stop/start immédiat
+// elapsedXXX lit la valeur courante de cumul
+// lastElapsedXXX lit la dervière valeur de temps
+
 public final class Stopwatch extends StopwatchAccessor {
     public static final int START_MODE=0;
     public static final int UNSTART_MODE=1;
@@ -9,13 +17,13 @@ public final class Stopwatch extends StopwatchAccessor {
     }
     public void start() {
         if (start != -1){
-            throw new IllegalStateException("Problem: Stopwatch successive calls of function start()");
+            throw new IllegalStateException("Problem: compressor.time.Stopwatch successive calls of function start()");
         }
         start = System.nanoTime();
     }
     public Stopwatch stop() {
         if (start == -1){
-            throw new IllegalStateException("Problem: Stopwatch function stop() is called without a corresponding start() call");
+            throw new IllegalStateException("Problem: compressor.time.Stopwatch function stop() is called without a corresponding start() call");
         }
         last=(System.nanoTime() - start);
         cumul += last;
@@ -25,7 +33,7 @@ public final class Stopwatch extends StopwatchAccessor {
     }
     public Stopwatch split(){
         if (start == -1) {
-            throw new IllegalStateException("Problem: Stopwatch function split() is called without a corresponding start() call");
+            throw new IllegalStateException("Problem: compressor.time.Stopwatch function split() is called without a corresponding start() call");
         }
         final long time=System.nanoTime();
         last=time -start;

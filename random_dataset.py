@@ -2,6 +2,8 @@ import pickle
 import random
 import json
 
+from bs4 import SoupStrainer
+
 # n = 1000
 # numMax = 100
 
@@ -15,15 +17,43 @@ import json
 
 # print(jsonString)
 
-with open('dataset/Regin.txt', 'r') as fichier:
+# with open('dataset/Regin.txt', 'r') as fichier:
+#     contenu = fichier.read()
+# contenu = contenu.replace("INTDATA BEGIN\n", "")
+# contenu = contenu.replace("INTDATA END\n", "")
+# contenu = contenu.split("\n")
+# l = []
+# for c in contenu:
+#     tmp = c.split(" ")[1:]
+#     l.append(" ".join(tmp))
+
+# l = "\n".join(l)
+
+# with open('dataset/Regin_format.txt', 'w') as file:
+#     # file.write(jsonString)
+#     file.write(l)
+
+
+with open('dataset/Regin_format.txt', 'r') as fichier:
     contenu = fichier.read()
 
-contenu = contenu.replace('INTDATA BEGIN\n', '')
-contenu = contenu.replace('INTDATA END\n', '')
+contenu = contenu.split("\n")
+l = []
+for c in contenu:
+    tmp = c.split(" ")
+    for i in range(1, len(tmp)):
+        if tmp[i] == tmp[i-1]:
+            tmp[i] = ''
 
-with open('dataset/Regin_format.txt', 'w') as file:
+    tmp = [i for i in tmp if i != '']
+    l.append(" ".join(tmp))
+
+l = "\n".join(l)
+
+
+with open('dataset/Regin_format_without_repetition.txt', 'w') as file:
     # file.write(jsonString)
-    file.write(contenu)
+    file.write(l)
 
 # pickle.dump(tree, file)
 
