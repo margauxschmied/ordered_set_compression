@@ -12,9 +12,7 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.Collections.max;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Collections;
 
 
@@ -498,7 +496,7 @@ public class BigDataSetTest {
 
     @Test
     void compressRunlength() throws IOException {
-        compressRunlength("dataset/Regin_format.txt", "dataset/compressBigDatasetRunlength.txt");
+        compressRunlength("dataset/bigDataset_format.txt", "dataset/compressBigDatasetRunlength.txt");
 
         size("dataset/compressBigDatasetRunlength.txt", "dataset/sizeBigDatasetRunlength.txt");
     }
@@ -507,12 +505,12 @@ public class BigDataSetTest {
     void decompressRunlength() throws IOException {
         decompressRunlength("dataset/compressBigDatasetRunlength.txt", "dataset/decompressBigDatasetRunlength.txt");
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetRunlength.txt");
+        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetRunlength.txt");
     }
 
     @Test
     void compressHuffman() throws IOException {
-        compressHuffman("dataset/Regin_format.txt", "dataset/compressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt");
+        compressHuffman("dataset/bigDataset_format.txt", "dataset/compressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt");
 
         size("dataset/compressBigDatasetHuffman.txt", "dataset/sizeBigDatasetHuffman.txt");
         size("dataset/treeBigDatasetHuffman.txt", "dataset/sizeTreeBigDatasetHuffman.txt");
@@ -522,12 +520,12 @@ public class BigDataSetTest {
     void decompressHuffman() throws IOException {
         decompressHuffman("dataset/compressBigDatasetHuffman.txt", "dataset/decompressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt");
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetHuffman.txt");
+        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetHuffman.txt");
     }
 
     @Test
     void compressDiff() throws IOException {
-        compressDiff("dataset/Regin_format.txt", "dataset/compressBigDatasetDiff.txt");
+        compressDiff("dataset/bigDataset_format.txt", "dataset/compressBigDatasetDiff.txt");
 
         size("dataset/compressBigDatasetDiff.txt", "dataset/sizeBigDatasetDiff.txt");
     }
@@ -536,12 +534,12 @@ public class BigDataSetTest {
     void decompressDiff() throws IOException {
         decompressDiff("dataset/compressBigDatasetDiff.txt", "dataset/decompressBigDatasetDiff.txt");
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetDiff.txt");
+        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetDiff.txt");
 
     }
     @Test
     void compressRunlengthDiff() throws IOException {
-        compressRunlengthDiff("dataset/Regin_format.txt", "dataset/compressBigDatasetRunlengthDiff.txt");
+        compressRunlengthDiff("dataset/bigDataset_format.txt", "dataset/compressBigDatasetRunlengthDiff.txt");
 
         size("dataset/compressBigDatasetRunlengthDiff.txt", "dataset/sizeBigDatasetRunlengthDiff.txt");
     }
@@ -551,14 +549,14 @@ public class BigDataSetTest {
         decompressRunlengthDiff("dataset/compressBigDatasetRunlengthDiff.txt", "dataset/decompressBigDatasetRunlengthDiff.txt");
 
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetRunlengthDiff.txt");
+        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetRunlengthDiff.txt");
 
     }
 
     @Test
     void compressComplementary() throws IOException {
-        size("dataset/Regin_format.txt", "dataset/sizeBigDataset.txt");
-        compressComplementary("dataset/Regin_format.txt", "dataset/compressBigDatasetComplementary.txt");
+        size("dataset/bigDataset_format.txt", "dataset/sizeBigDataset.txt");
+        compressComplementary("dataset/bigDataset_format.txt", "dataset/compressBigDatasetComplementary.txt");
         size("dataset/compressBigDatasetComplementary.txt", "dataset/sizeBigDatasetComplementary.txt");
     }
 
@@ -567,15 +565,15 @@ public class BigDataSetTest {
         decompressComplementary("dataset/compressBigDatasetComplementary.txt", "dataset/decompressBigDatasetComplementary.txt");
 
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetComplementary.txt");
+        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetComplementary.txt");
 
     }
 
     @Test
     void compressComplementary2() throws IOException {
-        size("dataset/Regin_format.txt", "dataset/sizeBigDataset.txt");
+        size("dataset/bigDataset_format.txt", "dataset/sizeBigDataset.txt");
         System.out.println("ok");
-        compressComplementary2("dataset/Regin_format.txt", "dataset/compressBigDatasetComplementary2.txt");
+        compressComplementary2("dataset/bigDataset_format.txt", "dataset/compressBigDatasetComplementary2.txt");
         System.out.println("ok");
         size("dataset/compressBigDatasetComplementary2.txt", "dataset/sizeBigDatasetComplementary2.txt");
     }
@@ -585,7 +583,7 @@ public class BigDataSetTest {
         decompressComplementary2("dataset/compressBigDatasetComplementary2.txt", "dataset/decompressBigDatasetComplementary2.txt");
 
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetComplementary2.txt");
+        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetComplementary2.txt");
 
     }
 
