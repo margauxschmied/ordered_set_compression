@@ -40,18 +40,20 @@ with open('dataset/Regin_format.txt', 'r') as fichier:
 contenu = contenu.split("\n")
 l = []
 for c in contenu:
-    tmp = c.split(" ")
-    for i in range(1, len(tmp)):
-        if tmp[i] == tmp[i-1]:
-            tmp[i] = ''
+    c = c.replace(" 0 0", " 0")
+    print(c in " 0 0")
+    # tmp = c.split(" ")
+    # for i in range(0, len(tmp)):
+    #     if tmp[i] != '' and int(tmp[i]) > 1000000000:
+    #         tmp[i] = ''
 
-    tmp = [i for i in tmp if i != '']
-    l.append(" ".join(tmp))
+    # tmp = [i for i in tmp if i != '']
+    # l.append(" ".join(tmp))
 
-l = "\n".join(l)
+l = "\n".join(contenu)
 
 
-with open('dataset/Regin_format_without_repetition.txt', 'w') as file:
+with open('dataset/Regin_format.txt', 'w') as file:
     # file.write(jsonString)
     file.write(l)
 

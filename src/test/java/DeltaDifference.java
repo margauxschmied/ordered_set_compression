@@ -8,9 +8,9 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class DeltaDifference {
-    List<Object> toCompress;
-    List<Object> toDecompress1;
-    List<Object> toDecompress4;
+    List<Integer> toCompress;
+    List<Integer> toDecompress1;
+    List<Integer> toDecompress4;
 
     RunLength runLength;
 

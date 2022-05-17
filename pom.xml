@@ -103,8 +103,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
                 <version>3.8.0</version>
                 <configuration>
                     <compilerVersion>${javac.target}</compilerVersion>
-                    <source>9</source>
-                    <target>9</target>
+                    <source>10</source>
+                    <target>10</target>
                 </configuration>
             </plugin>
             <plugin>

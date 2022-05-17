@@ -1,3 +1,4 @@
+import compressor.Complementary;
 import compressor.RunLength;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,12 +18,12 @@ public class ComplementaryTest {
     List<Integer> toCompress;
     List<Integer> toDecompress;
 
-    RunLength runLength;
+    Complementary complementary;
     ArrayList<Integer> listData;
 
     @BeforeEach
     void setUp() {
-        runLength = new RunLength();
+        complementary = new Complementary();
         toCompress = new ArrayList<>();
         toCompress.add(2);
         toCompress.add(7);
@@ -56,12 +57,12 @@ public class ComplementaryTest {
 
     @Test
     void compress() {
-        assertEquals(toDecompress, runLength.complementary(toCompress));
+        assertEquals(toDecompress, complementary.complementary(toCompress));
     }
 
     @Test
     void decompress() {
-        assertEquals(toCompress, runLength.complementary(toDecompress));
+        assertEquals(toCompress, complementary.complementary(toDecompress));
     }
 
     @Test
@@ -69,7 +70,7 @@ public class ComplementaryTest {
         assertEquals(new ArrayList<>() {{
             add(0);
             add(0);
-        }}, runLength.complementary(new ArrayList<>() {{
+        }}, complementary.complementaryByRange(new ArrayList<>() {{
             add(0);
         }}));
     }
@@ -80,7 +81,7 @@ public class ComplementaryTest {
         assertEquals(new ArrayList<>() {{
             add(0);
             add(100);
-        }}, runLength.complementary(listData));
+        }}, complementary.complementary(listData));
     }
 
     @Test
@@ -89,7 +90,7 @@ public class ComplementaryTest {
         assertEquals(new ArrayList<>() {{
             add(0);
             add(100);
-        }}, runLength.complementary(listData));
+        }}, complementary.complementary(listData));
     }
 
     @Test
@@ -98,7 +99,7 @@ public class ComplementaryTest {
         assertEquals(new ArrayList<>() {{
             add(0);
             add(100);
-        }}, runLength.complementaryByRange(listData));
+        }}, complementary.complementary(listData));
     }
 
     @Test
@@ -106,7 +107,7 @@ public class ComplementaryTest {
         assertEquals(new ArrayList<>() {{
             add(2);
             add(1);
-        }}, runLength.complementaryByRange(new ArrayList<>() {{
+        }}, complementary.complementary(new ArrayList<>() {{
             add(2);
             add(1);
         }}));

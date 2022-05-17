@@ -1,3 +1,4 @@
+import compressor.Complementary;
 import compressor.RunLength;
 import compressor.huffman.Huffman;
 import compressor.huffman.HuffmanData;
@@ -11,8 +12,11 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Collections.max;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.Collections;
+
 
 public class BigDataSetTest {
     List<Integer> toCompress;
@@ -22,6 +26,8 @@ public class BigDataSetTest {
     List listCompress;
     Map<Integer, String> mapTree;
     RunLength runLength = new RunLength();
+    Complementary complementary = new Complementary();
+
     Stopwatch stopwatch=new Stopwatch();
 
     void compressRunlength(String data, String runlength) throws IOException {
@@ -59,6 +65,8 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
     }
 
     void decompressRunlength(String data, String runlength) throws IOException {
@@ -87,6 +95,8 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
     }
 
     void compressHuffman(String data, String huffmanFile, String tree) throws IOException {
@@ -134,6 +144,7 @@ public class BigDataSetTest {
 
         writerHuffman.close();
         writerTree.close();
+        writerTime.close();
 
     }
 
@@ -176,6 +187,7 @@ public class BigDataSetTest {
         }
 
         writer.close();
+        writerTime.close();
 
     }
 
@@ -206,6 +218,8 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
     }
 
     void decompressDiff(String data, String compressFile) throws IOException {
@@ -235,6 +249,8 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
     }
 
     void compressRunlengthDiff(String data, String compressFile) throws IOException {
@@ -266,6 +282,8 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
     }
 
     void decompressRunlengthDiff(String data, String compressFile) throws IOException {
@@ -296,6 +314,7 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
     }
 
     void compressComplementary(String data, String compressFile) throws IOException {
@@ -313,8 +332,7 @@ public class BigDataSetTest {
             listData = Arrays.stream(obj.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
             stopwatch.start();
 
-            compress= runLength.complementaryByRange(listData);
-
+            compress= complementary.complementaryByRange(listData);
             stopwatch.stop();
             writerTime.println(stopwatch.lastElapsedNanoSeconds());
             stopwatch.reset();
@@ -326,6 +344,8 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
     }
 
     void decompressComplementary(String data, String compressFile) throws IOException {
@@ -342,7 +362,7 @@ public class BigDataSetTest {
             listData = Arrays.stream(obj.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
             stopwatch.start();
 
-            compress= runLength.complementaryByRange(listData);
+            compress= complementary.decomplementaryByRange(listData);
 
 
             stopwatch.stop();
@@ -356,6 +376,72 @@ public class BigDataSetTest {
 
         }
         writer.close();
+        writerTime.close();
+
+    }
+
+    void compressComplementary2(String data, String compressFile) throws IOException {
+        PrintWriter writer = new PrintWriter(compressFile);
+        PrintWriter writerTime = new PrintWriter("dataset/timeCompressComplementary2.txt");
+
+
+        listData = new ArrayList<>();
+
+        File doc = new File(data);
+        Scanner obj = new Scanner(doc);
+        List compress;
+
+        while (obj.hasNextLine()) {
+            listData = Arrays.stream(obj.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
+            stopwatch.start();
+
+            compress= complementary.complementaryByRange2(listData);
+//            compress=runLength.differencialDeltaSub0(compress);
+            stopwatch.stop();
+            writerTime.println(stopwatch.lastElapsedNanoSeconds());
+            stopwatch.reset();
+
+            compress= (List) compress.stream().map(String::valueOf).collect(Collectors.toList());
+
+            String result = String.join(" ", compress);
+            writer.println(result);
+
+        }
+        writer.close();
+        writerTime.close();
+
+    }
+
+    void decompressComplementary2(String data, String compressFile) throws IOException {
+        PrintWriter writer = new PrintWriter(compressFile);
+        PrintWriter writerTime = new PrintWriter("dataset/timeDecompressComplementary2.txt");
+
+        listData = new ArrayList<>();
+
+        File doc = new File(data);
+        Scanner obj = new Scanner(doc);
+        List compress;
+
+        while (obj.hasNextLine()) {
+            listData = Arrays.stream(obj.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
+            stopwatch.start();
+
+//            compress=runLength.differencialDeltaAdd0(listData);
+            compress= complementary.decomplementaryByRange2(listData);
+
+            stopwatch.stop();
+            writerTime.println(stopwatch.lastElapsedNanoSeconds());
+            stopwatch.reset();
+
+            compress= (List) compress.stream().map(String::valueOf).collect(Collectors.toList());
+
+            String result = String.join(" ", compress);
+            writer.println(result);
+
+        }
+        writer.close();
+        writerTime.close();
+
     }
 
     void verif(String data, String decompress) throws FileNotFoundException {
@@ -368,7 +454,6 @@ public class BigDataSetTest {
 
         File doc2 = new File(decompress);
         Scanner obj2 = new Scanner(doc2);
-        boolean b=true;
 
         while (obj.hasNextLine()) {
             listData=(Arrays.stream(obj.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList()));
@@ -378,9 +463,44 @@ public class BigDataSetTest {
 
     }
 
+    void size(String data, String fileOutput) throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter(fileOutput);
+
+        File doc = new File(data);
+        Scanner obj = new Scanner(doc);
+
+        listData = new ArrayList<Integer>();
+
+        int size=0;
+
+
+        while (obj.hasNextLine()) {
+            size=0;
+            String[] o=obj.nextLine().split(" ");
+            try {
+                listData = (Arrays.stream(o).map(Integer::valueOf).collect(Collectors.toList()));
+                int max=(int) Collections.max(listData);
+                int tmp=max%8;
+                max+=tmp;
+                size=max*listData.size();
+            } catch (Exception e) {
+                listData = (Arrays.stream(o).map(String::valueOf).collect(Collectors.toList()));
+                for (Object i : listData) {
+                    size+=((String) i).length();
+                }
+            }
+
+
+            writer.println(size);
+        }
+        writer.close();
+    }
+
     @Test
     void compressRunlength() throws IOException {
         compressRunlength("dataset/Regin_format.txt", "dataset/compressBigDatasetRunlength.txt");
+
+        size("dataset/compressBigDatasetRunlength.txt", "dataset/sizeBigDatasetRunlength.txt");
     }
 
     @Test
@@ -393,19 +513,23 @@ public class BigDataSetTest {
     @Test
     void compressHuffman() throws IOException {
         compressHuffman("dataset/Regin_format.txt", "dataset/compressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt");
+
+        size("dataset/compressBigDatasetHuffman.txt", "dataset/sizeBigDatasetHuffman.txt");
+        size("dataset/treeBigDatasetHuffman.txt", "dataset/sizeTreeBigDatasetHuffman.txt");
     }
 
     @Test
     void decompressHuffman() throws IOException {
         decompressHuffman("dataset/compressBigDatasetHuffman.txt", "dataset/decompressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt");
 
-        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetRunlength.txt");
+        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetHuffman.txt");
     }
 
     @Test
     void compressDiff() throws IOException {
         compressDiff("dataset/Regin_format.txt", "dataset/compressBigDatasetDiff.txt");
 
+        size("dataset/compressBigDatasetDiff.txt", "dataset/sizeBigDatasetDiff.txt");
     }
 
     @Test
@@ -418,6 +542,8 @@ public class BigDataSetTest {
     @Test
     void compressRunlengthDiff() throws IOException {
         compressRunlengthDiff("dataset/Regin_format.txt", "dataset/compressBigDatasetRunlengthDiff.txt");
+
+        size("dataset/compressBigDatasetRunlengthDiff.txt", "dataset/sizeBigDatasetRunlengthDiff.txt");
     }
 
     @Test
@@ -431,7 +557,9 @@ public class BigDataSetTest {
 
     @Test
     void compressComplementary() throws IOException {
-        compressComplementary("dataset/Regin_format_without_repetition.txt", "dataset/compressBigDatasetComplementary.txt");
+        size("dataset/Regin_format.txt", "dataset/sizeBigDataset.txt");
+        compressComplementary("dataset/Regin_format.txt", "dataset/compressBigDatasetComplementary.txt");
+        size("dataset/compressBigDatasetComplementary.txt", "dataset/sizeBigDatasetComplementary.txt");
     }
 
     @Test
@@ -439,7 +567,30 @@ public class BigDataSetTest {
         decompressComplementary("dataset/compressBigDatasetComplementary.txt", "dataset/decompressBigDatasetComplementary.txt");
 
 
-        verif("dataset/Regin_format_without_repetition.txt", "dataset/decompressBigDatasetComplementary.txt");
+        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetComplementary.txt");
 
+    }
+
+    @Test
+    void compressComplementary2() throws IOException {
+        size("dataset/Regin_format.txt", "dataset/sizeBigDataset.txt");
+        System.out.println("ok");
+        compressComplementary2("dataset/Regin_format.txt", "dataset/compressBigDatasetComplementary2.txt");
+        System.out.println("ok");
+        size("dataset/compressBigDatasetComplementary2.txt", "dataset/sizeBigDatasetComplementary2.txt");
+    }
+
+    @Test
+    void decompressComplementary2() throws IOException {
+        decompressComplementary2("dataset/compressBigDatasetComplementary2.txt", "dataset/decompressBigDatasetComplementary2.txt");
+
+
+        verif("dataset/Regin_format.txt", "dataset/decompressBigDatasetComplementary2.txt");
+
+    }
+
+    @Test
+    void truc(){
+        System.out.println(Integer.toBinaryString(-1));
     }
 }

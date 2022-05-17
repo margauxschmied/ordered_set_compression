@@ -1,147 +1,164 @@
 package compressor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AbstractCompressor implements Compressor {
 
-    public List<Object> differencialDeltaSub(List<Object> list) {
-        List<Object> res = new ArrayList();
-        res.add(list.get(0));
-        for (int i = 1; i < list.size(); i++) {
-            res.add((Integer) list.get(i) - (Integer) list.get(i - 1));
-        }
-        return res;
-    }
-
-    public List<Object> differencialDeltaAdd(List<Object> list) {
-        List<Object> res = new ArrayList();
-        res.add(list.get(0));
-        for (int i = 1; i < list.size(); i++) {
-            res.add((Integer) list.get(i) + (Integer) res.get(i - 1));
-        }
-        return res;
-    }
-
-    public List<Object> differencialDeltaSub4(List<Object> list) {
-        List<Object> res = new ArrayList();
-        res.add(list.get(0));
-        res.add(list.get(1));
-        res.add(list.get(2));
-        res.add(list.get(3));
-
-        for (int i = 4; i < list.size(); i += 4) {
-            res.add((Integer) list.get(i) - (Integer) list.get(i - 4));
-            if (i + 1 < list.size()) {
-                res.add((Integer) list.get(i + 1) - (Integer) list.get(i - 3));
-                if (i + 2 < list.size()) {
-                    res.add((Integer) list.get(i + 2) - (Integer) list.get(i - 2));
-                    if (i + 3 < list.size()) {
-                        res.add((Integer) list.get(i + 3) - (Integer) list.get(i - 1));
-                    }
-                }
-            }
-        }
-        return res;
-    }
-
-    public List<Object> differencialDeltaAdd4(List<Object> list) {
-        List<Object> res = new ArrayList();
-        res.add(list.get(0));
-        res.add(list.get(1));
-        res.add(list.get(2));
-        res.add(list.get(3));
-
-        for (int i = 4; i < list.size(); i += 4) {
-            res.add((Integer) list.get(i) + (Integer) res.get(i - 4));
-            if (i + 1 < list.size()) {
-                res.add((Integer) list.get(i + 1) + (Integer) list.get(i - 3));
-                if (i + 2 < list.size()) {
-                    res.add((Integer) list.get(i + 2) + (Integer) list.get(i - 2));
-                    if (i + 3 < list.size()) {
-                        res.add((Integer) list.get(i + 3) + (Integer) list.get(i - 1));
-                    }
-                }
-            }
-        }
-        return res;
-    }
-
-    public List<Integer> complementary(List<Integer> list) {
+    public List<Integer> differencialDeltaSub(List<Integer> list) {
         List<Integer> res = new ArrayList();
         res.add(list.get(0));
-        for (int i = list.get(0); i < list.get(list.size() - 1); i++) {
-            if (!list.contains(i)) {
-                res.add(i);
-            }
+        for (int i = 1; i < list.size(); i++) {
+            res.add(list.get(i) - list.get(i - 1));
         }
-        res.add(list.get(list.size() - 1));
         return res;
     }
 
-    public List<Integer> complementaryByRange(List<Integer> list) {
-        List<List<Integer>> range=new ArrayList<>();
+    public List<Integer> differencialDeltaAdd(List<Integer> list) {
+        List<Integer> res = new ArrayList();
+        res.add(list.get(0));
+        for (int i = 1; i < list.size(); i++) {
+            res.add(list.get(i) + res.get(i - 1));
+        }
+        return res;
+    }
+
+    public List<Integer> differencialDeltaSub0(List<Integer> list) {
+        List<Integer> res = new ArrayList();
+
         List<Integer> tmp = new ArrayList();
 
-//        tmp.add(list.get(0));
-        for (int i=1; i<list.size(); i++){
-            tmp.add(list.get(i-1));
-            if(list.get(i)< list.get(i-1)){
-                range.add(tmp);
-                tmp=new ArrayList<>();
+//        res.add(list.get(0));
+
+        for (int i=1; i<list.size(); i++) {
+            tmp.add(list.get(i - 1));
+            if (list.get(i - 1)!=0 && list.get(i) < list.get(i - 1)) {
+                if(tmp.size()>2 ){
+                    res.addAll(differencialDeltaSub00(tmp));
+                    System.out.println(tmp);
+                }
+                else{
+                    res.addAll(tmp);
+                }
+                tmp = new ArrayList<>();
+
             }
-//            else{
-//                tmp.add(list.get(i-1));
-//            }
         }
 
-//        for (int i=1; i<list.size()-1; i++){
-////            tmp.add(list.get(i));
-//            if(list.get(i)+1< list.get(i+1)){
-//                tmp.add(list.get(i));
-//            }
-//            else{
-//                range.add(tmp);
-//                tmp=new ArrayList<>();
-//            }
-//        }
         tmp.add(list.get(list.size() - 1));
 
-        if(!tmp.isEmpty()) {
-            range.add(tmp);
-        }
+        res.addAll(tmp);
 
+        return res;
+    }
 
+    public List<Integer> differencialDeltaSub00(List<Integer> list) {
         List<Integer> res = new ArrayList();
-        for (List<Integer> l: range) {
-            if(l.size()>1 && l.get(l.size() - 1)-l.get(0)<l.size()*2) {
-//                res.add(l.get(0));
-//                for (int i = 0; i < l.size() - 1; i++) {
-//                    int nb = l.get(i);
-//                    while (nb < l.get(i + 1)-1) { //TODO: garder les repetition
-//                        res.add(nb);
-//                        nb += 1;
-//                    }
-//                }
-//                res.add(l.get(l.size() - 1));
-//                for (int i = l.get(0); i < l.get(l.size() - 1); i++) {
-//                    if (!list.contains(i)) {
-//                        res.add(i);
-//                    }
-//                }
-//                res.add(l.get(l.size() - 1));
-                res.addAll(complementary(l));
+
+        res.add(list.get(0));
+
+        for (int i = 1; i < list.size(); i++) {
+            if(list.get(i)!=0) {
+
+                res.add(list.get(i) - list.get(i - 1));
             }
             else{
-                res.addAll(l);}
-//            for (int i = l.get(0); i < l.get(l.size() - 1); i++) {
-//                if (!list.contains(i)) {
-//                    res.add(i);
-//                }
-//            }
-//            res.add(l.get(l.size() - 1));
-//            res.addAll(complementary(l));
+                res.add(0);
+            }
         }
         return res;
     }
+
+    public List<Integer> differencialDeltaAdd0(List<Integer> list) {
+        List<Integer> res = new ArrayList();
+
+        List<Integer> tmp = new ArrayList();
+
+//        res.add(list.get(0));
+
+        for (int i=1; i<list.size(); i++) {
+            tmp.add(list.get(i - 1));
+            if (list.get(i - 1)!=0 && list.get(i) < list.get(i - 1)) {
+                if(tmp.size()>=2 ){
+                    res.addAll(differencialDeltaAdd00(tmp));
+                }
+                else{
+                    res.addAll(tmp);
+                }
+                tmp = new ArrayList<>();
+
+            }
+        }
+
+        tmp.add(list.get(list.size() - 1));
+
+        res.addAll(tmp);
+
+        return res;
+    }
+
+    public List<Integer> differencialDeltaAdd00(List<Integer> list) {
+        List<Integer> res = new ArrayList();
+        res.add(list.get(0));
+        res.add(list.get(1));
+
+        for (int i = 2; i < list.size(); i++) {
+            if(list.get(i)!=0) {
+                res.add(list.get(i) + res.get(i - 1));
+            }
+            else{
+                res.add(0);
+            }
+        }
+        return res;
+    }
+
+    public List<Integer> differencialDeltaSub4(List<Integer> list) {
+        List<Integer> res = new ArrayList();
+        res.add(list.get(0));
+        res.add(list.get(1));
+        res.add(list.get(2));
+        res.add(list.get(3));
+
+        for (int i = 4; i < list.size(); i += 4) {
+            res.add(list.get(i) - list.get(i - 4));
+            if (i + 1 < list.size()) {
+                res.add(list.get(i + 1) - list.get(i - 3));
+                if (i + 2 < list.size()) {
+                    res.add(list.get(i + 2) - list.get(i - 2));
+                    if (i + 3 < list.size()) {
+                        res.add(list.get(i + 3) - list.get(i - 1));
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public List<Integer> differencialDeltaAdd4(List<Integer> list) {
+        List<Integer> res = new ArrayList();
+        res.add(list.get(0));
+        res.add(list.get(1));
+        res.add(list.get(2));
+        res.add(list.get(3));
+
+        for (int i = 4; i < list.size(); i += 4) {
+            res.add(list.get(i) + res.get(i - 4));
+            if (i + 1 < list.size()) {
+                res.add(list.get(i + 1) + list.get(i - 3));
+                if (i + 2 < list.size()) {
+                    res.add(list.get(i + 2) + list.get(i - 2));
+                    if (i + 3 < list.size()) {
+                        res.add(list.get(i + 3) + list.get(i - 1));
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+
 }
