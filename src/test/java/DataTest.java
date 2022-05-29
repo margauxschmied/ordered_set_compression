@@ -26,9 +26,9 @@ public class DataTest {
     Composition composition=new Composition();
     Stopwatch stopwatch=new Stopwatch();
 
-    void compressRunlength(String data, String runlength) throws IOException {
+    void compressRunlength(String data, String runlength, String time) throws IOException {
         PrintWriter writer = new PrintWriter(runlength);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressRunlength.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -65,9 +65,9 @@ public class DataTest {
 
     }
 
-    void decompressRunlength(String data, String runlength) throws IOException {
+    void decompressRunlength(String data, String runlength, String time) throws IOException {
         PrintWriter writer = new PrintWriter(runlength);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressRunlength.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -95,10 +95,10 @@ public class DataTest {
 
     }
 
-    void compressHuffman(String data, String huffmanFile, String tree) throws IOException {
+    void compressHuffman(String data, String huffmanFile, String tree, String time) throws IOException {
         PrintWriter writerHuffman = new PrintWriter(huffmanFile);
         PrintWriter writerTree = new PrintWriter(tree);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressHuffman.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
 
@@ -144,9 +144,9 @@ public class DataTest {
 
     }
 
-    void decompressHuffman(String data, String huffmanFile, String tree) throws IOException {
+    void decompressHuffman(String data, String huffmanFile, String tree, String time) throws IOException {
         PrintWriter writer = new PrintWriter(huffmanFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressHuffman.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
         listData = new ArrayList<>();
@@ -187,9 +187,9 @@ public class DataTest {
 
     }
 
-    void compressDiff(String data, String compressFile) throws IOException {
+    void compressDiff(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressDiff.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
         listData = new ArrayList<>();
@@ -218,9 +218,9 @@ public class DataTest {
 
     }
 
-    void decompressDiff(String data, String compressFile) throws IOException {
+    void decompressDiff(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressDiff.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -249,9 +249,9 @@ public class DataTest {
 
     }
 
-    void compressRunlengthDiff(String data, String compressFile) throws IOException {
+    void compressRunlengthDiff(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressRunlengthDiff.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
         listData = new ArrayList<>();
@@ -282,9 +282,9 @@ public class DataTest {
 
     }
 
-    void decompressRunlengthDiff(String data, String compressFile) throws IOException {
+    void decompressRunlengthDiff(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressRunlengthDiff.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -313,9 +313,9 @@ public class DataTest {
         writerTime.close();
     }
 
-    void compressComplementary(String data, String compressFile) throws IOException {
+    void compressComplementary(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressComplementary.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
         listData = new ArrayList<>();
@@ -344,9 +344,9 @@ public class DataTest {
 
     }
 
-    void decompressComplementary(String data, String compressFile) throws IOException {
+    void decompressComplementary(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressComplementary.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -376,9 +376,9 @@ public class DataTest {
 
     }
 
-    void compressComplementary2(String data, String compressFile) throws IOException {
+    void compressComplementary2(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressComplementary2.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
         listData = new ArrayList<>();
@@ -408,9 +408,9 @@ public class DataTest {
 
     }
 
-    void decompressComplementary2(String data, String compressFile) throws IOException {
+    void decompressComplementary2(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressComplementary2.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -440,9 +440,9 @@ public class DataTest {
 
     }
 
-    void compressStreamVByte(String data, String compressFile) throws IOException {
+    void compressStreamVByte(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressStreamVByte.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
 
         listData = new ArrayList<>();
@@ -472,9 +472,9 @@ public class DataTest {
 
     }
 
-    void decompressStreamVByte(String data, String compressFile) throws IOException {
+    void decompressStreamVByte(String data, String compressFile, String time) throws IOException {
         PrintWriter writer = new PrintWriter(compressFile);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressStreamVByte.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         String listData;
         String listSize;
@@ -507,9 +507,9 @@ public class DataTest {
 
     }
 
-    void compressCompose(String data, String runlength) throws IOException {
+    void compressCompose(String data, String runlength, String time) throws IOException {
         PrintWriter writer = new PrintWriter(runlength);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeCompressCompose.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         listData = new ArrayList<>();
 
@@ -538,9 +538,9 @@ public class DataTest {
 
     }
 
-    void decompressCompose(String data, String runlength) throws IOException {
+    void decompressCompose(String data, String runlength, String time) throws IOException {
         PrintWriter writer = new PrintWriter(runlength);
-        PrintWriter writerTime = new PrintWriter("dataset/bigDataSet/time/timeDecompressCompose.txt");
+        PrintWriter writerTime = new PrintWriter(time);
 
         String listData;
         String listSize;
