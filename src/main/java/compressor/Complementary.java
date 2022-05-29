@@ -29,15 +29,15 @@ public class Complementary extends AbstractCompressor{
         return result;
     }
 
-    public List<Integer> decomplementaryByRange(List<Integer> list) {
-        return complementaryByRange(copyOfRange(list, 1, list.size()-1), -(list.get(0)), false);
+    public List<Integer> decompress(List<Integer> list) {
+        return compress(copyOfRange(list, 1, list.size()-1), -(list.get(0)), false);
     }
 
-    public List<Integer> complementaryByRange(List<Integer> list) {
-        return complementaryByRange(list, Collections.min(list)-1, true);
+    public List<Integer> compress(List<Integer> list) {
+        return compress(list, Collections.min(list)-1, true);
     }
 
-    public List<Integer> complementaryByRange(List<Integer> list, int min, boolean compress) {
+    public List<Integer> compress(List<Integer> list, int min, boolean compress) {
         List<List<Integer>> range=new ArrayList<>();
         List<Integer> tmp = new ArrayList();
 //        System.out.println(Collections.min(list));
@@ -72,8 +72,8 @@ public class Complementary extends AbstractCompressor{
         return res;
     }
 
-    public List complementaryByRange2(List listData) {
-        return complementaryByRange2(listData, (int) Collections.min(listData)-1);
+    public List compress2(List listData) {
+        return compress2(listData, (int) Collections.min(listData)-1);
     }
 
     public List<Integer> compressComplementary2(List<Integer> list) {
@@ -84,7 +84,7 @@ public class Complementary extends AbstractCompressor{
         return res;
     }
 
-    public List<Integer> complementaryByRange2(List<Integer> list, int min) {
+    public List<Integer> compress2(List<Integer> list, int min) {
         List<Integer> tmp = new ArrayList();
 
         List<Integer> res = new ArrayList();
@@ -114,8 +114,8 @@ public class Complementary extends AbstractCompressor{
         return res;
     }
 
-    public List<Integer> decomplementaryByRange2(List<Integer> list) {
-        return decomplementaryByRange2(copyOfRange(list, 1, list.size()-1), -(list.get(0)));
+    public List<Integer> decompress2(List<Integer> list) {
+        return decompress2(copyOfRange(list, 1, list.size()-1), -(list.get(0)));
     }
 
     public List<Integer> decompressComplementary2(List<Integer> list) {
@@ -125,7 +125,7 @@ public class Complementary extends AbstractCompressor{
         }
         return res;
     }
-    public List<Integer> decomplementaryByRange2(List<Integer> listData, int min) {
+    public List<Integer> decompress2(List<Integer> listData, int min) {
         List<Integer> res = new ArrayList();
 
 

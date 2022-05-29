@@ -38,7 +38,6 @@ public abstract class AbstractCompressor implements Compressor {
             if (list.get(i - 1)!=0 && list.get(i) < list.get(i - 1)) {
                 if(tmp.size()>2 ){
                     res.addAll(differencialDeltaSub00(tmp));
-                    System.out.println(tmp);
                 }
                 else{
                     res.addAll(tmp);

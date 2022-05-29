@@ -1,5 +1,4 @@
 import compressor.Complementary;
-import compressor.RunLength;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -70,7 +69,7 @@ public class ComplementaryTest {
         assertEquals(new ArrayList<>() {{
             add(0);
             add(0);
-        }}, complementary.complementaryByRange(new ArrayList<>() {{
+        }}, complementary.compress(new ArrayList<>() {{
             add(0);
         }}));
     }
