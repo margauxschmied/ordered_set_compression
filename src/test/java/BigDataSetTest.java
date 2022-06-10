@@ -22,120 +22,120 @@ public class BigDataSetTest extends DataTest{
 
     @Test
     void compressRunlength() throws IOException {
-        compressRunlength("dataset/bigDataset_format.txt", "dataset/compressBigDatasetRunlength.txt", "dataset/timeBigDatasetBigDatasetCompressRunlength.txt");
+        compressRunlength("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetRunlength.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressRunlength.txt");
 
-        sizeInt("dataset/compressBigDatasetRunlength.txt", "dataset/sizeBigDatasetRunlength.txt");
+        sizeInt("dataset/bigDataSet/compressBigDatasetRunlength.txt", "dataset/bigDataSet/sizeBigDatasetRunlength.txt");
     }
 
     @Test
     void decompressRunlength() throws IOException {
-        decompressRunlength("dataset/compressBigDatasetRunlength.txt", "dataset/decompressBigDatasetRunlength.txt", "dataset/timeBigDatasetBigDatasetDecompressRunlength.txt");
+        decompressRunlength("dataset/bigDataSet/compressBigDatasetRunlength.txt", "dataset/bigDataSet/decompressBigDatasetRunlength.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressRunlength.txt");
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetRunlength.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetRunlength.txt");
     }
 
     @Test
     void compressHuffman() throws IOException {
-        compressHuffman("dataset/bigDataset_format.txt", "dataset/compressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt", "dataset/timeBigDatasetBigDatasetCompressHuffman.txt");
+        compressHuffman("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetHuffman.txt", "dataset/bigDataSet/treeBigDatasetHuffman.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressHuffman.txt");
 
-        sizeString("dataset/compressBigDatasetHuffman.txt", "dataset/sizeBigDatasetHuffman.txt");
-        sizeInt("dataset/treeBigDatasetHuffman.txt", "dataset/sizeTreeBigDatasetHuffman.txt");
+        sizeString("dataset/bigDataSet/compressBigDatasetHuffman.txt", "dataset/bigDataSet/sizeBigDatasetHuffman.txt");
+        sizeInt("dataset/bigDataSet/treeBigDatasetHuffman.txt", "dataset/bigDataSet/sizeTreeBigDatasetHuffman.txt");
     }
 
     @Test
     void decompressHuffman() throws IOException {
-        decompressHuffman("dataset/compressBigDatasetHuffman.txt", "dataset/decompressBigDatasetHuffman.txt", "dataset/treeBigDatasetHuffman.txt", "dataset/timeBigDatasetBigDatasetDecompressHuffman.txt");
+        decompressHuffman("dataset/bigDataSet/compressBigDatasetHuffman.txt", "dataset/bigDataSet/decompressBigDatasetHuffman.txt", "dataset/bigDataSet/treeBigDatasetHuffman.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressHuffman.txt");
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetHuffman.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetHuffman.txt");
     }
 
     @Test
     void compressDiff() throws IOException {
-        compressDiff("dataset/bigDataset_format.txt", "dataset/compressBigDatasetDiff.txt", "dataset/timeBigDatasetBigDatasetCompressDiff.txt");
+        compressDiff("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetDiff.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressDiff.txt");
 
-        sizeInt("dataset/compressBigDatasetDiff.txt", "dataset/sizeBigDatasetDiff.txt");
+        sizeInt("dataset/bigDataSet/compressBigDatasetDiff.txt", "dataset/bigDataSet/sizeBigDatasetDiff.txt");
     }
 
     @Test
     void decompressDiff() throws IOException {
-        decompressDiff("dataset/compressBigDatasetDiff.txt", "dataset/decompressBigDatasetDiff.txt", "dataset/timeBigDatasetBigDatasetDecompressDiff.txt");
+        decompressDiff("dataset/bigDataSet/compressBigDatasetDiff.txt", "dataset/bigDataSet/decompressBigDatasetDiff.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressDiff.txt");
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetDiff.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetDiff.txt");
 
     }
     @Test
     void compressRunlengthDiff() throws IOException {
-        compressRunlengthDiff("dataset/bigDataset_format.txt", "dataset/compressBigDatasetRunlengthDiff.txt", "dataset/timeBigDatasetBigDatasetCompressRunlengthDiff.txt");
+        compressRunlengthDiff("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetRunlengthDiff.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressRunlengthDiff.txt");
 
-        sizeInt("dataset/compressBigDatasetRunlengthDiff.txt", "dataset/sizeBigDatasetRunlengthDiff.txt");
+        sizeInt("dataset/bigDataSet/compressBigDatasetRunlengthDiff.txt", "dataset/bigDataSet/sizeBigDatasetRunlengthDiff.txt");
     }
 
     @Test
     void decompressRunlengthDiff() throws IOException {
-        decompressRunlengthDiff("dataset/compressBigDatasetRunlengthDiff.txt", "dataset/decompressBigDatasetRunlengthDiff.txt", "dataset/timeBigDatasetBigDatasetDecompressRunlengthDiff.txt");
+        decompressRunlengthDiff("dataset/bigDataSet/compressBigDatasetRunlengthDiff.txt", "dataset/bigDataSet/decompressBigDatasetRunlengthDiff.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressRunlengthDiff.txt");
 
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetRunlengthDiff.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetRunlengthDiff.txt");
 
     }
 
     @Test
     void compressComplementary() throws IOException {
-        sizeInt("dataset/bigDataset_format.txt", "dataset/sizeBigDataset.txt");
-        compressComplementary("dataset/bigDataset_format.txt", "dataset/compressBigDatasetComplementary.txt", "dataset/timeBigDatasetBigDatasetCompressComplementary.txt");
-        sizeInt("dataset/compressBigDatasetComplementary.txt", "dataset/sizeBigDatasetComplementary.txt");
+        sizeInt("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/sizeBigDataset.txt");
+        compressComplementary("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetComplementary.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressComplementary.txt");
+        sizeInt("dataset/bigDataSet/compressBigDatasetComplementary.txt", "dataset/bigDataSet/sizeBigDatasetComplementary.txt");
     }
 
     @Test
     void decompressComplementary() throws IOException {
-        decompressComplementary("dataset/compressBigDatasetComplementary.txt", "dataset/decompressBigDatasetComplementary.txt", "dataset/timeBigDatasetBigDatasetDecompressComplementary.txt");
+        decompressComplementary("dataset/bigDataSet/compressBigDatasetComplementary.txt", "dataset/bigDataSet/decompressBigDatasetComplementary.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressComplementary.txt");
 
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetComplementary.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetComplementary.txt");
 
     }
 
     @Test
     void compressComplementary2() throws IOException {
-        compressComplementary2("dataset/bigDataset_format.txt", "dataset/compressBigDatasetComplementary2.txt", "dataset/timeBigDatasetBigDatasetCompressComplementary2.txt");
-        sizeInt("dataset/compressBigDatasetComplementary2.txt", "dataset/sizeBigDatasetComplementary2.txt");
+        compressComplementary2("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetComplementary2.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressComplementary2.txt");
+        sizeInt("dataset/bigDataSet/compressBigDatasetComplementary2.txt", "dataset/bigDataSet/sizeBigDatasetComplementary2.txt");
     }
 
     @Test
     void decompressComplementary2() throws IOException {
-        decompressComplementary2("dataset/compressBigDatasetComplementary2.txt", "dataset/decompressBigDatasetComplementary2.txt", "dataset/timeBigDatasetBigDatasetDecompressComplementary2.txt");
+        decompressComplementary2("dataset/bigDataSet/compressBigDatasetComplementary2.txt", "dataset/bigDataSet/decompressBigDatasetComplementary2.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressComplementary2.txt");
 
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetComplementary2.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetComplementary2.txt");
 
     }
 
     @Test
     void compressStreamVByte() throws IOException {
-        compressStreamVByte("dataset/bigDataset_format.txt", "dataset/compressBigDatasetStreamVByte.txt", "dataset/timeBigDatasetBigDatasetCompressStreamVByte.txt");
-        sizeString("dataset/compressBigDatasetStreamVByte.txt", "dataset/sizeBigDatasetStreamVByte.txt");
+        compressStreamVByte("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetStreamVByte.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetCompressStreamVByte.txt");
+        sizeString("dataset/bigDataSet/compressBigDatasetStreamVByte.txt", "dataset/bigDataSet/sizeBigDatasetStreamVByte.txt");
     }
 
     @Test
     void decompressStreamVByte() throws IOException {
-        decompressStreamVByte("dataset/compressBigDatasetStreamVByte.txt", "dataset/decompressBigDatasetStreamVByte.txt", "dataset/timeBigDatasetBigDatasetDecompressStreamVByte.txt");
+        decompressStreamVByte("dataset/bigDataSet/compressBigDatasetStreamVByte.txt", "dataset/bigDataSet/decompressBigDatasetStreamVByte.txt", "dataset/bigDataSet/timeBigDatasetBigDatasetDecompressStreamVByte.txt");
 
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetStreamVByte.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetStreamVByte.txt");
 
     }
 
     @Test
     void compressCompose() throws IOException {
-        compressCompose("dataset/bigDataset_format.txt", "dataset/compressBigDatasetCompose.txt", "dataset/timeBigDatasetCompressCompose.txt");
-        sizeString("dataset/compressBigDatasetCompose.txt", "dataset/sizeBigDatasetCompose.txt");
+        compressCompose("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/compressBigDatasetCompose.txt", "dataset/bigDataSet/timeBigDatasetCompressCompose.txt");
+        sizeString("dataset/bigDataSet/compressBigDatasetCompose.txt", "dataset/bigDataSet/sizeBigDatasetCompose.txt");
     }
 
     @Test
     void decompressCompose() throws IOException {
-        decompressCompose("dataset/compressBigDatasetCompose.txt", "dataset/decompressBigDatasetCompose.txt", "dataset/timeBigDatasetDecompressCompose.txt");
+        decompressCompose("dataset/bigDataSet/compressBigDatasetCompose.txt", "dataset/bigDataSet/decompressBigDatasetCompose.txt", "dataset/bigDataSet/timeBigDatasetDecompressCompose.txt");
 
-        verif("dataset/bigDataset_format.txt", "dataset/decompressBigDatasetCompose.txt");
+        verif("dataset/bigDataSet/bigDataset_format.txt", "dataset/bigDataSet/decompressBigDatasetCompose.txt");
 
     }
 

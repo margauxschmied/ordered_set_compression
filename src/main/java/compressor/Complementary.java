@@ -86,9 +86,7 @@ public class Complementary extends AbstractCompressor{
 
     public List<Integer> compress2(List<Integer> list, int min) {
         List<Integer> tmp = new ArrayList();
-
         List<Integer> res = new ArrayList();
-
         res.add(min);
 
 

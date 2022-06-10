@@ -4,20 +4,25 @@ import json
 
 from bs4 import SoupStrainer
 
-n = 1000000
-numMax = 10000000
+n = 100000
+numMax = 1000000
 
 l = []
 i = 0
 while len(l) < n:
     a = random.randint(0, numMax)
     if len(l) != 0:
-        if a not in l:
+        if a > l[-1]:
             l.append(a)
     else:
         l.append(a)
 
-l = sorted(l)
+    i += 1
+    if i == n//2:
+        i = 0
+        l.append(a)
+
+# l = sorted(l)
 
 print(l)
 
@@ -69,7 +74,7 @@ print(l)
 # l = "\n".join(contenu)
 
 
-with open('dataset/artificiel/dataset_' + str(n) + '_' + str(numMax) + '.txt', 'w') as file:
+with open('dataset/artificielPseudoCroissant/dataset_' + str(n) + '_' + str(numMax) + '.txt', 'w') as file:
     # file.write(jsonString)
     file.write(l)
 

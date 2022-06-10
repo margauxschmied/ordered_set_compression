@@ -13,7 +13,7 @@ public class StreamVByte extends AbstractCompressor{
 
 
         for (Integer compress : toCompress) {
-            s = Integer.toBinaryString(compress).length(); //TODO: converir tout les compress en binaire et adapter le decompress
+            s = Integer.toBinaryString(compress).length();
             size.append(converteSize((int) Math.ceil((double) s / 8)));
 
             String tmp = Integer.toBinaryString(compress);

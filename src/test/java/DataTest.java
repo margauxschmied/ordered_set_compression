@@ -606,6 +606,7 @@ public class DataTest {
         while (obj.hasNextLine()) {
             size=0;
             String[] o=obj.nextLine().split(" ");
+            System.out.println(o.length);
             try {
                 listData = (Arrays.stream(o).map(Integer::valueOf).collect(Collectors.toList()));
                 int max = Integer.toBinaryString((int) Collections.max(listData)).length();

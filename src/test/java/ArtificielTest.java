@@ -23,120 +23,120 @@ public class ArtificielTest extends DataTest{
 
     @Test
     void compressRunlength() throws IOException {
-        compressRunlength("dataset/dataset_artificiel.txt", "dataset/compressArtificielRunlength.txt", "dataset/timeArtificielArtificielCompressRunlength.txt");
+        compressRunlength("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielRunlength.txt", "dataset/artificiel/timeArtificielArtificielCompressRunlength.txt");
 
-        sizeInt("dataset/compressArtificielRunlength.txt", "dataset/sizeArtificielRunlength.txt");
+        sizeInt("dataset/artificiel/compressArtificielRunlength.txt", "dataset/artificiel/sizeArtificielRunlength.txt");
     }
 
     @Test
     void decompressRunlength() throws IOException {
-        decompressRunlength("dataset/compressArtificielRunlength.txt", "dataset/decompressArtificielRunlength.txt", "dataset/timeArtificielArtificielDecompressRunlength.txt");
+        decompressRunlength("dataset/artificiel/compressArtificielRunlength.txt", "dataset/artificiel/decompressArtificielRunlength.txt", "dataset/artificiel/timeArtificielArtificielDecompressRunlength.txt");
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielRunlength.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielRunlength.txt");
     }
 
     @Test
     void compressHuffman() throws IOException {
-        compressHuffman("dataset/dataset_artificiel.txt", "dataset/compressArtificielHuffman.txt", "dataset/treeArtificielHuffman.txt", "dataset/timeArtificielArtificielCompressHuffman.txt");
+        compressHuffman("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielHuffman.txt", "dataset/artificiel/treeArtificielHuffman.txt", "dataset/artificiel/timeArtificielArtificielCompressHuffman.txt");
 
-        sizeString("dataset/compressArtificielHuffman.txt", "dataset/sizeArtificielHuffman.txt");
-        sizeInt("dataset/treeArtificielHuffman.txt", "dataset/sizeTreeArtificielHuffman.txt");
+        sizeString("dataset/artificiel/compressArtificielHuffman.txt", "dataset/artificiel/sizeArtificielHuffman.txt");
+        sizeInt("dataset/artificiel/treeArtificielHuffman.txt", "dataset/artificiel/sizeTreeArtificielHuffman.txt");
     }
 
     @Test
     void decompressHuffman() throws IOException {
-        decompressHuffman("dataset/compressArtificielHuffman.txt", "dataset/decompressArtificielHuffman.txt", "dataset/treeArtificielHuffman.txt", "dataset/timeArtificielArtificielDecompressHuffman.txt");
+        decompressHuffman("dataset/artificiel/compressArtificielHuffman.txt", "dataset/artificiel/decompressArtificielHuffman.txt", "dataset/artificiel/treeArtificielHuffman.txt", "dataset/artificiel/timeArtificielArtificielDecompressHuffman.txt");
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielHuffman.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielHuffman.txt");
     }
 
     @Test
     void compressDiff() throws IOException {
-        compressDiff("dataset/dataset_artificiel.txt", "dataset/compressArtificielDiff.txt", "dataset/timeArtificielArtificielCompressDiff.txt");
+        compressDiff("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielDiff.txt", "dataset/artificiel/timeArtificielArtificielCompressDiff.txt");
 
-        sizeInt("dataset/compressArtificielDiff.txt", "dataset/sizeArtificielDiff.txt");
+        sizeInt("dataset/artificiel/compressArtificielDiff.txt", "dataset/artificiel/sizeArtificielDiff.txt");
     }
 
     @Test
     void decompressDiff() throws IOException {
-        decompressDiff("dataset/compressArtificielDiff.txt", "dataset/decompressArtificielDiff.txt", "dataset/timeArtificielArtificielDecompressDiff.txt");
+        decompressDiff("dataset/artificiel/compressArtificielDiff.txt", "dataset/artificiel/decompressArtificielDiff.txt", "dataset/artificiel/timeArtificielArtificielDecompressDiff.txt");
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielDiff.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielDiff.txt");
 
     }
     @Test
     void compressRunlengthDiff() throws IOException {
-        compressRunlengthDiff("dataset/dataset_artificiel.txt", "dataset/compressArtificielRunlengthDiff.txt", "dataset/timeArtificielArtificielCompressRunlengthDiff.txt");
+        compressRunlengthDiff("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielRunlengthDiff.txt", "dataset/artificiel/timeArtificielArtificielCompressRunlengthDiff.txt");
 
-        sizeInt("dataset/compressArtificielRunlengthDiff.txt", "dataset/sizeArtificielRunlengthDiff.txt");
+        sizeInt("dataset/artificiel/compressArtificielRunlengthDiff.txt", "dataset/artificiel/sizeArtificielRunlengthDiff.txt");
     }
 
     @Test
     void decompressRunlengthDiff() throws IOException {
-        decompressRunlengthDiff("dataset/compressArtificielRunlengthDiff.txt", "dataset/decompressArtificielRunlengthDiff.txt", "dataset/timeArtificielArtificielDecompressRunlengthDiff.txt");
+        decompressRunlengthDiff("dataset/artificiel/compressArtificielRunlengthDiff.txt", "dataset/artificiel/decompressArtificielRunlengthDiff.txt", "dataset/artificiel/timeArtificielArtificielDecompressRunlengthDiff.txt");
 
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielRunlengthDiff.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielRunlengthDiff.txt");
 
     }
 
 //    @Test
 //    void compressComplementary() throws IOException {
-//        sizeInt("dataset/dataset_artificiel.txt", "dataset/sizeArtificiel.txt");
-//        compressComplementary("dataset/dataset_artificiel.txt", "dataset/compressArtificielComplementary.txt", "dataset/timeArtificielArtificielCompressComplementary.txt");
-//        sizeInt("dataset/compressArtificielComplementary.txt", "dataset/sizeArtificielComplementary.txt");
+//        sizeInt("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/sizeArtificiel.txt");
+//        compressComplementary("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielComplementary.txt", "dataset/artificiel/timeArtificielArtificielCompressComplementary.txt");
+//        sizeInt("dataset/artificiel/compressArtificielComplementary.txt", "dataset/artificiel/sizeArtificielComplementary.txt");
 //    }
 //
 //    @Test
 //    void decompressComplementary() throws IOException {
-//        decompressComplementary("dataset/compressArtificielComplementary.txt", "dataset/decompressArtificielComplementary.txt", "dataset/timeArtificielArtificielDecompressComplementary.txt");
+//        decompressComplementary("dataset/artificiel/compressArtificielComplementary.txt", "dataset/artificiel/decompressArtificielComplementary.txt", "dataset/artificiel/timeArtificielArtificielDecompressComplementary.txt");
 //
 //
-//        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielComplementary.txt");
+//        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielComplementary.txt");
 //
 //    }
 
     @Test
     void compressComplementary2() throws IOException {
-        compressComplementary2("dataset/dataset_artificiel.txt", "dataset/compressArtificielComplementary2.txt", "dataset/timeArtificielArtificielCompressComplementary2.txt");
-        sizeInt("dataset/compressArtificielComplementary2.txt", "dataset/sizeArtificielComplementary2.txt");
+        compressComplementary2("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielComplementary2.txt", "dataset/artificiel/timeArtificielArtificielCompressComplementary2.txt");
+        sizeInt("dataset/artificiel/compressArtificielComplementary2.txt", "dataset/artificiel/sizeArtificielComplementary2.txt");
     }
 
     @Test
     void decompressComplementary2() throws IOException {
-        decompressComplementary2("dataset/compressArtificielComplementary2.txt", "dataset/decompressArtificielComplementary2.txt", "dataset/timeArtificielArtificielDecompressComplementary2.txt");
+        decompressComplementary2("dataset/artificiel/compressArtificielComplementary2.txt", "dataset/artificiel/decompressArtificielComplementary2.txt", "dataset/artificiel/timeArtificielArtificielDecompressComplementary2.txt");
 
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielComplementary2.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielComplementary2.txt");
 
     }
 
     @Test
     void compressStreamVByte() throws IOException {
-        compressStreamVByte("dataset/dataset_artificiel.txt", "dataset/compressArtificielStreamVByte.txt", "dataset/timeArtificielArtificielCompressStreamVByte.txt");
-        sizeString("dataset/compressArtificielStreamVByte.txt", "dataset/sizeArtificielStreamVByte.txt");
+        compressStreamVByte("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielStreamVByte.txt", "dataset/artificiel/timeArtificielArtificielCompressStreamVByte.txt");
+        sizeString("dataset/artificiel/compressArtificielStreamVByte.txt", "dataset/artificiel/sizeArtificielStreamVByte.txt");
     }
 
     @Test
     void decompressStreamVByte() throws IOException {
-        decompressStreamVByte("dataset/compressArtificielStreamVByte.txt", "dataset/decompressArtificielStreamVByte.txt", "dataset/timeArtificielArtificielDecompressStreamVByte.txt");
+        decompressStreamVByte("dataset/artificiel/compressArtificielStreamVByte.txt", "dataset/artificiel/decompressArtificielStreamVByte.txt", "dataset/artificiel/timeArtificielArtificielDecompressStreamVByte.txt");
 
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielStreamVByte.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielStreamVByte.txt");
 
     }
 
     @Test
     void compressCompose() throws IOException {
-        compressCompose("dataset/dataset_artificiel.txt", "dataset/compressArtificielCompose.txt", "dataset/timeArtificielCompressCompose.txt");
-        sizeString("dataset/compressArtificielCompose.txt", "dataset/sizeArtificielCompose.txt");
+        compressCompose("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/compressArtificielCompose.txt", "dataset/artificiel/timeArtificielCompressCompose.txt");
+        sizeString("dataset/artificiel/compressArtificielCompose.txt", "dataset/artificiel/sizeArtificielCompose.txt");
     }
 
     @Test
     void decompressCompose() throws IOException {
-        decompressCompose("dataset/compressArtificielCompose.txt", "dataset/decompressArtificielCompose.txt", "dataset/timeArtificielDecompressCompose.txt");
+        decompressCompose("dataset/artificiel/compressArtificielCompose.txt", "dataset/artificiel/decompressArtificielCompose.txt", "dataset/artificiel/timeArtificielDecompressCompose.txt");
 
-        verif("dataset/dataset_artificiel.txt", "dataset/decompressArtificielCompose.txt");
+        verif("dataset/artificiel/dataset_artificiel.txt", "dataset/artificiel/decompressArtificielCompose.txt");
 
     }
 
