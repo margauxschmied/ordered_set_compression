@@ -5,24 +5,24 @@ import matplotlib.pyplot as plt
 #      "sizeBigDatasetHuffman.txt", "sizeBigDatasetRunlength.txt", "sizeBigDatasetRunlengthDiff.txt", "sizeBigDatasetStreamVByte.txt", "sizeTreeBigDatasetHuffman.txt"]
 
 
-# a = ["timeBigDatasetBigDatasetCompressComplementary2.txt", "timeBigDatasetCompressCompose.txt", "timeBigDatasetBigDatasetCompressDiff.txt",
-#      "timeBigDatasetBigDatasetCompressHuffman.txt", "timeBigDatasetBigDatasetCompressRunlength.txt", "timeBigDatasetBigDatasetCompressRunlengthDiff.txt", "timeBigDatasetBigDatasetCompressStreamVByte.txt"]
+# a = ["timeBigDatasetCompressComplementary2.txt", "timeBigDatasetCompressCompose.txt", "timeBigDatasetCompressDiff.txt",
+#      "timeBigDatasetCompressHuffman.txt", "timeBigDatasetCompressRunlength.txt", "timeBigDatasetCompressRunlengthDiff.txt", "timeBigDatasetCompressStreamVByte.txt"]
 
 
-# c = ["timeBigDatasetBigDatasetDecompressComplementary2.txt", "timeBigDatasetDecompressCompose.txt", "timeBigDatasetBigDatasetDecompressDiff.txt",
-#      "timeBigDatasetBigDatasetDecompressHuffman.txt", "timeBigDatasetBigDatasetDecompressRunlength.txt", "timeBigDatasetBigDatasetDecompressRunlengthDiff.txt", "timeBigDatasetBigDatasetDecompressStreamVByte.txt"]
+# c = ["timeBigDatasetDecompressComplementary2.txt", "timeBigDatasetDecompressCompose.txt", "timeBigDatasetDecompressDiff.txt",
+#      "timeBigDatasetDecompressHuffman.txt", "timeBigDatasetDecompressRunlength.txt", "timeBigDatasetDecompressRunlengthDiff.txt", "timeBigDatasetDecompressStreamVByte.txt"]
 
 
 b = ["sizeArtificiel.txt", "sizeArtificielComplementary2.txt", "sizeArtificielCompose.txt", "sizeArtificielDiff.txt", "sizeArtificielHuffman.txt",
      "sizeArtificielRunlength.txt", "sizeArtificielRunlengthDiff.txt", "sizeArtificielStreamVByte.txt", "sizeTreeArtificielHuffman.txt"]
 
 
-a = ["timeArtificielArtificielCompressComplementary2.txt", "timeArtificielCompressCompose.txt", "timeArtificielArtificielCompressDiff.txt",
-     "timeArtificielArtificielCompressHuffman.txt", "timeArtificielArtificielCompressRunlength.txt", "timeArtificielArtificielCompressRunlengthDiff.txt", "timeArtificielArtificielCompressStreamVByte.txt"]
+a = ["timeArtificielCompressComplementary2.txt", "timeArtificielCompressCompose.txt", "timeArtificielCompressDiff.txt",
+     "timeArtificielCompressHuffman.txt", "timeArtificielCompressRunlength.txt", "timeArtificielCompressRunlengthDiff.txt", "timeArtificielCompressStreamVByte.txt"]
 
 
-c = ["timeArtificielArtificielDecompressComplementary2.txt", "timeArtificielDecompressCompose.txt", "timeArtificielArtificielDecompressDiff.txt", "timeArtificielArtificielDecompressHuffman.txt",
-     "timeArtificielArtificielDecompressRunlength.txt", "timeArtificielArtificielDecompressRunlengthDiff.txt", "timeArtificielArtificielDecompressStreamVByte.txt"]
+c = ["timeArtificielDecompressComplementary2.txt", "timeArtificielDecompressCompose.txt", "timeArtificielDecompressDiff.txt", "timeArtificielDecompressHuffman.txt",
+     "timeArtificielDecompressRunlength.txt", "timeArtificielDecompressRunlengthDiff.txt", "timeArtificielDecompressStreamVByte.txt"]
 
 
 def func(tc, td, s, tT):

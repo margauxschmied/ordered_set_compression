@@ -10,27 +10,27 @@ b = ["sizeArtificiel.txt", "sizeArtificielComplementary2.txt", "sizeArtificielCo
      "sizeArtificielRunlength.txt", "sizeArtificielRunlengthDiff.txt", "sizeArtificielStreamVByte.txt", "sizeTreeArtificielHuffman.txt"]
 
 
-# a = ["timeArtificielArtificielCompressComplementary2.txt", "timeArtificielCompressCompose.txt", "timeArtificielArtificielCompressDiff.txt",
-#      "timeArtificielArtificielCompressHuffman.txt", "timeArtificielArtificielCompressRunlength.txt", "timeArtificielArtificielCompressRunlengthDiff.txt", "timeArtificielArtificielCompressStreamVByte.txt"]
+# a = ["timeArtificielCompressComplementary2.txt", "timeArtificielCompressCompose.txt", "timeArtificielCompressDiff.txt",
+#      "timeArtificielCompressHuffman.txt", "timeArtificielCompressRunlength.txt", "timeArtificielCompressRunlengthDiff.txt", "timeArtificielCompressStreamVByte.txt"]
 
 
-# a = ["timeArtificielArtificielDecompressComplementary2.txt", "timeArtificielDecompressCompose.txt", "timeArtificielArtificielDecompressDiff.txt", "timeArtificielArtificielDecompressHuffman.txt",
-#      "timeArtificielArtificielDecompressRunlength.txt", "timeArtificielArtificielDecompressRunlengthDiff.txt", "timeArtificielArtificielDecompressStreamVByte.txt"]
+# a = ["timeArtificielDecompressComplementary2.txt", "timeArtificielDecompressCompose.txt", "timeArtificielDecompressDiff.txt", "timeArtificielDecompressHuffman.txt",
+#      "timeArtificielDecompressRunlength.txt", "timeArtificielDecompressRunlengthDiff.txt", "timeArtificielDecompressStreamVByte.txt"]
 
 
-# a = ["timeBigDatasetBigDatasetCompressComplementary.txt", "timeBigDatasetBigDatasetCompressComplementary2.txt", "timeBigDatasetCompressCompose.txt", "timeBigDatasetBigDatasetCompressDiff.txt",
-#      "timeBigDatasetBigDatasetCompressHuffman.txt", "timeBigDatasetBigDatasetCompressRunlength.txt", "timeBigDatasetBigDatasetCompressRunlengthDiff.txt", "timeBigDatasetBigDatasetCompressStreamVByte.txt"]
+# a = ["timeBigDatasetCompressComplementary.txt", "timeBigDatasetCompressComplementary2.txt", "timeBigDatasetCompressCompose.txt", "timeBigDatasetCompressDiff.txt",
+#      "timeBigDatasetCompressHuffman.txt", "timeBigDatasetCompressRunlength.txt", "timeBigDatasetCompressRunlengthDiff.txt", "timeBigDatasetCompressStreamVByte.txt"]
 
 
-# a = ["timeBigDatasetBigDatasetDecompressComplementary.txt", "timeBigDatasetBigDatasetDecompressComplementary2.txt", "timeBigDatasetDecompressCompose.txt", "timeBigDatasetBigDatasetDecompressDiff.txt",
-#      "timeBigDatasetBigDatasetDecompressHuffman.txt", "timeBigDatasetBigDatasetDecompressRunlength.txt", "timeBigDatasetBigDatasetDecompressRunlengthDiff.txt", "timeBigDatasetBigDatasetDecompressStreamVByte.txt"]
+# a = ["timeBigDatasetDecompressComplementary.txt", "timeBigDatasetDecompressComplementary2.txt", "timeBigDatasetDecompressCompose.txt", "timeBigDatasetDecompressDiff.txt",
+#      "timeBigDatasetDecompressHuffman.txt", "timeBigDatasetDecompressRunlength.txt", "timeBigDatasetDecompressRunlengthDiff.txt", "timeBigDatasetDecompressStreamVByte.txt"]
 
 
-# a = ["timeArtificielArtificielCompressComplementary2.txt", "timeArtificielCompressCompose.txt", "timeArtificielArtificielCompressDiff.txt", "timeArtificielArtificielCompressHuffman.txt",
-#      "timeArtificielArtificielCompressRunlength.txt", "timeArtificielArtificielCompressRunlengthDiff.txt", "timeArtificielArtificielCompressStreamVByte.txt"]
+# a = ["timeArtificielCompressComplementary2.txt", "timeArtificielCompressCompose.txt", "timeArtificielCompressDiff.txt", "timeArtificielCompressHuffman.txt",
+#      "timeArtificielCompressRunlength.txt", "timeArtificielCompressRunlengthDiff.txt", "timeArtificielCompressStreamVByte.txt"]
 
-a = ["timeArtificielArtificielDecompressComplementary2.txt", "timeArtificielDecompressCompose.txt", "timeArtificielArtificielDecompressDiff.txt", "timeArtificielArtificielDecompressHuffman.txt",
-     "timeArtificielArtificielDecompressRunlength.txt", "timeArtificielArtificielDecompressRunlengthDiff.txt", "timeArtificielArtificielDecompressStreamVByte.txt"]
+a = ["timeArtificielDecompressComplementary2.txt", "timeArtificielDecompressCompose.txt", "timeArtificielDecompressDiff.txt", "timeArtificielDecompressHuffman.txt",
+     "timeArtificielDecompressRunlength.txt", "timeArtificielDecompressRunlengthDiff.txt", "timeArtificielDecompressStreamVByte.txt"]
 
 
 tabSize = []
